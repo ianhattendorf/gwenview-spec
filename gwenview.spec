@@ -8,7 +8,7 @@
 
 Name:           gwenview
 Version:        1.0.1
-Release:        0.fdr.4.1
+Release:        0.fdr.4.1.90
 Epoch:          0
 Summary:        Simple image viewer for KDE.
 
