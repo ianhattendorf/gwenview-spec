@@ -1,8 +1,7 @@
 Name:           gwenview
 Version:        1.1.6
 Release:        2
-Epoch:          0
-Summary:        Simple image viewer for KDE.
+Summary:        Simple image viewer for KDE
 
 Group:          Applications/Multimedia
 License:        GPL
@@ -17,11 +16,11 @@ BuildRequires:  gettext
 #BuildRequires:  fam-devel glib2-devel
 
 %description
-Gwenview is an image viewer for KDE. 
+Gwenview is an image viewer for KDE.
 
-It features a folder tree window and a file list window to provide easy 
-navigation in your file hierarchy.  Image loading is done by the Qt library, 
-so it supports all image formats your Qt installation supports. 
+It features a folder tree window and a file list window to provide easy
+navigation in your file hierarchy.  Image loading is done by the Qt library,
+so it supports all image formats your Qt installation supports.
 
 
 %prep
