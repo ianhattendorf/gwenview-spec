@@ -1,6 +1,7 @@
 Name:           gwenview
 Version:        1.1.6
-Release:        2
+Release:        3
+
 Summary:        Simple image viewer for KDE
 
 Group:          Applications/Multimedia
@@ -76,6 +77,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Apr  7 2005 Michael Schwendt <mschwendt[AT]users.sf.net>
+- rebuilt
+
 * Wed Nov 24 2004 Aurelien Bompard <gauret[AT]free.fr> 0:1.1.6-2
 - remove hardcoded requirement to kipi-plugins
 
