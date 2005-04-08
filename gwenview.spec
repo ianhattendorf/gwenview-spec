@@ -1,13 +1,13 @@
 Name:           gwenview
-Version:        1.1.6
-Release:        3
+Version:        1.2.0
+Release:        1.fc4
 
 Summary:        Simple image viewer for KDE
 
 Group:          Applications/Multimedia
 License:        GPL
 URL:            http://gwenview.sf.net
-Source0:        http://dl.sf.net/gwenview/gwenview-1.1.6.tar.bz2
+Source0:        http://dl.sf.net/gwenview/gwenview-1.2.0.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  kdelibs-devel >= 6:3.1
@@ -26,8 +26,6 @@ so it supports all image formats your Qt installation supports.
 
 %prep
 %setup -q
-perl -pi -e 's,Commend\[ko\]=,Comment\[ko\]=,' desktopfiles/gwenview.desktop
-#perl -pi -e 's,Categories=Qt;KDE;Graphics,Categories=Qt;KDE;Graphics;,' desktopfiles/gwenview.desktop
 
 %build
 [ -n "$QTDIR" ] || . %{_sysconfdir}/profile.d/qt.sh
@@ -49,7 +47,6 @@ desktop-file-install --vendor fedora --delete-original \
   --add-category Viewer \
   $RPM_BUILD_ROOT%{_datadir}/applications/kde/%{name}.desktop
 
-rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/{xx,ven,nso}
 %find_lang %{name}
 
 
@@ -74,9 +71,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 %{_libdir}/lib*
 %{_libdir}/kde3/lib*
+%{_libdir}/kde3/gwenview.*
+%{_datadir}/doc/HTML/en/gwenview
 
 
 %changelog
+* Fri Apr 08 2005 Aurelien Bompard <gauret[AT]free.fr> 1.2.0-1.fc4
+- version 1.2.0
+- change release tag for FC4
+
 * Fri Apr  7 2005 Michael Schwendt <mschwendt[AT]users.sf.net>
 - rebuilt
 
