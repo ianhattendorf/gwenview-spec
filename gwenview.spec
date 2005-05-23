@@ -1,6 +1,6 @@
 Name:           gwenview
 Version:        1.2.0
-Release:        1.fc4
+Release:        2.fc4
 
 Summary:        Simple image viewer for KDE
 
@@ -76,6 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun May 22 2005 Jeremy Katz <katzj@redhat.com> - 1.2.0-2.fc4
+- rebuild on all arches
+
 * Fri Apr 08 2005 Aurelien Bompard <gauret[AT]free.fr> 1.2.0-1.fc4
 - version 1.2.0
 - change release tag for FC4
