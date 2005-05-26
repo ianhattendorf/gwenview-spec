@@ -1,6 +1,6 @@
 Name:           gwenview
 Version:        1.2.0
-Release:        2.fc4
+Release:        3.fc4
 
 Summary:        Simple image viewer for KDE
 
@@ -28,10 +28,10 @@ so it supports all image formats your Qt installation supports.
 %setup -q
 
 %build
-[ -n "$QTDIR" ] || . %{_sysconfdir}/profile.d/qt.sh
-%configure --disable-rpath \
+unset QTDIR && . %{_sysconfdir}/profile.d/qt.sh
+%configure --disable-rpath --disable-libsuffix \
            --disable-debug \
-           --enable-kipi
+           --enable-kipi 
 # --enable-final  \
 make %{?_smp_mflags}
 
@@ -76,6 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu May 26 2005 Jeremy Katz <katzj@redhat.com> - 1.2.0-3.fc4
+- fix build on 64bit systems (#158887)
+
 * Sun May 22 2005 Jeremy Katz <katzj@redhat.com> - 1.2.0-2.fc4
 - rebuild on all arches
 
