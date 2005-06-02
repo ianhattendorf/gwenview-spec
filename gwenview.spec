@@ -1,13 +1,13 @@
 Name:           gwenview
 Version:        1.2.0
-Release:        3.fc4
-
+Release:        4%{?dist}
 Summary:        Simple image viewer for KDE
 
 Group:          Applications/Multimedia
 License:        GPL
 URL:            http://gwenview.sf.net
 Source0:        http://dl.sf.net/gwenview/gwenview-1.2.0.tar.bz2
+Patch0:         gwenview-1.2.0-workaround-missing-libfam.la.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  kdelibs-devel >= 6:3.1
@@ -26,6 +26,8 @@ so it supports all image formats your Qt installation supports.
 
 %prep
 %setup -q
+%patch0 -p1 -b .workaround-missing-libfam.la
+
 
 %build
 unset QTDIR && . %{_sysconfdir}/profile.d/qt.sh
@@ -76,6 +78,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Jun  2 2005 Michael Schwendt <mschwendt[AT]users.sf.net> - 1.2.0-4.fc4
+- temporarily add patch to work around Fedora Core bug 159090
+
 * Thu May 26 2005 Jeremy Katz <katzj@redhat.com> - 1.2.0-3.fc4
 - fix build on 64bit systems (#158887)
 
