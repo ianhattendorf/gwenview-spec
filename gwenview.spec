@@ -1,13 +1,12 @@
 Name:           gwenview
-Version:        1.2.0
-Release:        4%{?dist}
+Version:        1.3.1
+Release:        1%{?dist}
 Summary:        Simple image viewer for KDE
 
 Group:          Applications/Multimedia
 License:        GPL
 URL:            http://gwenview.sf.net
-Source0:        http://dl.sf.net/gwenview/gwenview-1.2.0.tar.bz2
-Patch0:         gwenview-1.2.0-workaround-missing-libfam.la.patch
+Source0:        http://dl.sf.net/gwenview/gwenview-1.3.1.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  kdelibs-devel >= 6:3.1
@@ -26,14 +25,11 @@ so it supports all image formats your Qt installation supports.
 
 %prep
 %setup -q
-%patch0 -p1 -b .workaround-missing-libfam.la
 
 
 %build
 unset QTDIR && . %{_sysconfdir}/profile.d/qt.sh
-%configure --disable-rpath --disable-libsuffix \
-           --disable-debug \
-           --enable-kipi 
+%configure --disable-rpath --disable-debug --enable-kipi
 # --enable-final  \
 make %{?_smp_mflags}
 
@@ -49,7 +45,21 @@ desktop-file-install --vendor fedora --delete-original \
   --add-category Viewer \
   $RPM_BUILD_ROOT%{_datadir}/applications/kde/%{name}.desktop
 
+# Files list
 %find_lang %{name}
+# HTML help
+for lang_dir in $RPM_BUILD_ROOT%{_datadir}/doc/HTML/* ; do
+  if [ -d $lang_dir ]; then
+    lang=$(basename $lang_dir)
+    echo "%lang($lang) %{_datadir}/doc/HTML/$lang/*" >> %{name}.lang
+    # replace absolute symlinks with relative ones
+    pushd $lang_dir
+      for i in *; do
+        [ -d $i -a -L $i/common ] && rm -f $i/common && ln -sf ../common $i/common
+      done
+    popd
+  fi
+done
 
 
 %post -p /sbin/ldconfig
@@ -63,21 +73,31 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
-%doc AUTHORS COPYING ChangeLog NEWS README TODO CREDITS
+%doc AUTHORS COPYING ChangeLog NEWS README TODO
 %{_bindir}/*
 %{_datadir}/applications/kde/*.desktop
 %{_datadir}/apps/konqueror/servicemenus/*
 %{_datadir}/icons/*/*/apps/*
-%{_datadir}/apps/*
+%{_datadir}/apps/gwenview
+%{_datadir}/apps/gvdirpart
+%{_datadir}/apps/gvimagepart
+%{_datadir}/apps/kconf_update
 %{_datadir}/services/*.desktop
+%{_datadir}/config.kcfg/*.kcfg
 %{_mandir}/man1/*
 %{_libdir}/lib*
 %{_libdir}/kde3/lib*
 %{_libdir}/kde3/gwenview.*
-%{_datadir}/doc/HTML/en/gwenview
 
 
 %changelog
+* Sun Nov 20 2005 Aurelien Bompard <gauret[AT]free.fr> 1.3.1-1
+- version 1.3.1
+- drop patch0
+
+* Mon Sep 12 2005 Aurelien Bompard <gauret[AT]free.fr> 1.3.0-1
+- version 1.3.0
+
 * Thu Jun  2 2005 Michael Schwendt <mschwendt[AT]users.sf.net> - 1.2.0-4.fc4
 - temporarily add patch to work around Fedora Core bug 159090
 
