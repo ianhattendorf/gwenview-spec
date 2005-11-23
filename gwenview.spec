@@ -1,6 +1,6 @@
 Name:           gwenview
 Version:        1.3.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Simple image viewer for KDE
 
 Group:          Applications/Multimedia
@@ -29,6 +29,8 @@ so it supports all image formats your Qt installation supports.
 
 %build
 unset QTDIR && . %{_sysconfdir}/profile.d/qt.sh
+# work around an improper ${kdelibsuff}
+export QTLIB=${QTDIR}/lib QTINC=${QTDIR}/include
 %configure --disable-rpath --disable-debug --enable-kipi
 # --enable-final  \
 make %{?_smp_mflags}
@@ -91,6 +93,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Nov 23 2005 Aurelien Bompard <gauret[AT]free.fr> 1.3.1-2
+- fix build (qt env var)
+
 * Sun Nov 20 2005 Aurelien Bompard <gauret[AT]free.fr> 1.3.1-1
 - version 1.3.1
 - drop patch0
