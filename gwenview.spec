@@ -1,6 +1,6 @@
 Name:           gwenview
 Version:        1.3.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Simple image viewer for KDE
 
 Group:          Applications/Multimedia
@@ -13,7 +13,9 @@ BuildRequires:  kdelibs-devel >= 6:3.1
 BuildRequires:  desktop-file-utils
 BuildRequires:  libkipi-devel
 BuildRequires:  gettext
-#BuildRequires:  fam-devel glib2-devel
+%if %{fedora} >= 5
+BuildRequires:  libXt-devel
+%endif
 
 %description
 Gwenview is an image viewer for KDE.
@@ -93,6 +95,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Nov 24 2005 Aurelien Bompard <gauret[AT]free.fr> 1.3.1-3
+- fix build with modular Xorg
+
 * Wed Nov 23 2005 Aurelien Bompard <gauret[AT]free.fr> 1.3.1-2
 - fix build (qt env var)
 
