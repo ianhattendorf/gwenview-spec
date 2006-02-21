@@ -1,6 +1,6 @@
 Name:           gwenview
 Version:        1.3.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Simple image viewer for KDE
 
 Group:          Applications/Multimedia
@@ -95,6 +95,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Feb 21 2006 Aurelien Bompard <gauret[AT]free.fr> 1.3.1-4
+- rebuild for fc5
+
 * Thu Nov 24 2005 Aurelien Bompard <gauret[AT]free.fr> 1.3.1-3
 - fix build with modular Xorg
 
