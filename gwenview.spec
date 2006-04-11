@@ -1,6 +1,6 @@
 Name:           gwenview
 Version:        1.3.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Simple image viewer for KDE
 
 Group:          Applications/Multimedia
@@ -13,7 +13,7 @@ BuildRequires:  kdelibs-devel >= 6:3.1
 BuildRequires:  desktop-file-utils
 BuildRequires:  libkipi-devel
 BuildRequires:  gettext
-%if %{fedora} >= 5
+%if "%{fedora}" >= "5"
 BuildRequires:  libXt-devel
 %endif
 
@@ -95,6 +95,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Apr 11 2006 Aurelien Bompard <gauret[AT]free.fr> 1.3.1-5
+- fix build outside the buildsystem (bug 188486)
+
 * Tue Feb 21 2006 Aurelien Bompard <gauret[AT]free.fr> 1.3.1-4
 - rebuild for fc5
 
