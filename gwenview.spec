@@ -1,12 +1,13 @@
 Name:           gwenview
-Version:        1.3.1
-Release:        6%{?dist}
+Version:        1.4.0
+Release:        1%{?dist}
 Summary:        Simple image viewer for KDE
 
 Group:          Applications/Multimedia
 License:        GPL
 URL:            http://gwenview.sf.net
-Source0:        http://dl.sf.net/gwenview/gwenview-1.3.1.tar.bz2
+Source0:        http://dl.sf.net/gwenview/gwenview-1.4.0.tar.bz2
+Source1:        http://dl.sf.net/gwenview/gwenview-i18n-1.4.0.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  kdelibs-devel >= 6:3.1
@@ -17,6 +18,10 @@ BuildRequires:  gettext
 BuildRequires:  libXt-devel
 %endif
 
+# Maybe I'll split it in the future
+Provides:       gwenview-i18n = %{version}-%{release}
+
+
 %description
 Gwenview is an image viewer for KDE.
 
@@ -26,7 +31,7 @@ so it supports all image formats your Qt installation supports.
 
 
 %prep
-%setup -q
+%setup -q -a 1
 
 
 %build
@@ -36,6 +41,11 @@ export QTLIB=${QTDIR}/lib QTINC=${QTDIR}/include
 %configure --disable-rpath --disable-debug --enable-kipi
 # --enable-final  \
 make %{?_smp_mflags}
+
+cd %{name}-i18n-%{version}
+%configure
+make %{?_smp_mflags}
+cd ..
 
 
 %install
@@ -49,8 +59,13 @@ desktop-file-install --vendor fedora --delete-original \
   --add-category Viewer \
   $RPM_BUILD_ROOT%{_datadir}/applications/kde/%{name}.desktop
 
+cd %{name}-i18n-%{version}
+make install DESTDIR=$RPM_BUILD_ROOT
+cd ..
+
 # Files list
 %find_lang %{name}
+
 # HTML help
 for lang_dir in $RPM_BUILD_ROOT%{_datadir}/doc/HTML/* ; do
   if [ -d $lang_dir ]; then
@@ -77,7 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
-%doc AUTHORS COPYING ChangeLog NEWS README TODO
+%doc AUTHORS COPYING NEWS README TODO
 %{_bindir}/*
 %{_datadir}/applications/kde/*.desktop
 %{_datadir}/apps/konqueror/servicemenus/*
