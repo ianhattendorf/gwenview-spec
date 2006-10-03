@@ -1,6 +1,6 @@
 Name:           gwenview
 Version:        1.4.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Simple image viewer for KDE
 
 Group:          Applications/Multimedia
@@ -14,6 +14,7 @@ BuildRequires:  kdelibs-devel >= 6:3.1
 BuildRequires:  desktop-file-utils
 BuildRequires:  libkipi-devel
 BuildRequires:  gettext
+BuildRequires:  libexif-devel
 %if "%{fedora}" >= "5"
 BuildRequires:  libXt-devel
 %endif
@@ -110,6 +111,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Oct 03 2006 Aurelien Bompard <abompard@fedoraproject.org> 1.4.0-2
+- missing BR: libexif-devel
+
+* Tue Oct 03 2006 Aurelien Bompard <abompard@fedoraproject.org> 1.4.0-1
+- version 1.4.0
+
 * Wed Aug 30 2006 Aurelien Bompard <abompard@fedoraproject.org> 1.3.1-6
 - rebuild
 
