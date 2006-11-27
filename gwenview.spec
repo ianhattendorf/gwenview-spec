@@ -1,13 +1,13 @@
 Name:           gwenview
-Version:        1.4.0
-Release:        3%{?dist}
+Version:        1.4.1
+Release:        1%{?dist}
 Summary:        Simple image viewer for KDE
 
 Group:          Applications/Multimedia
 License:        GPL
 URL:            http://gwenview.sf.net
-Source0:        http://dl.sf.net/gwenview/gwenview-1.4.0.tar.bz2
-Source1:        http://dl.sf.net/gwenview/gwenview-i18n-1.4.0.tar.bz2
+Source0:        http://dl.sf.net/gwenview/gwenview-%{version}.tar.bz2
+Source1:        http://dl.sf.net/gwenview/gwenview-i18n-%{version}.tar.bz2
 # Patch for libexif >= 0.6.13
 Patch0:         gwenview-1.4.0-libexif.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -17,6 +17,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  libkipi-devel
 BuildRequires:  gettext
 BuildRequires:  libexif-devel
+BuildRequires:  exiv2-devel
 %if "%{fedora}" >= "5"
 BuildRequires:  libXt-devel
 %endif
@@ -116,6 +117,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Nov 27 2006 Aurelien Bompard <abompard@fedoraproject.org> 1.4.1-1
+- version 1.4.1
+
 * Tue Oct 03 2006 Aurelien Bompard <abompard@fedoraproject.org> 1.4.0-3
 - patch for latest libexif-devel
 
