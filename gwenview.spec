@@ -1,6 +1,6 @@
 Name:           gwenview
 Version:        1.4.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Simple image viewer for KDE
 
 Group:          Applications/Multimedia
@@ -8,15 +8,12 @@ License:        GPL
 URL:            http://gwenview.sf.net
 Source0:        http://dl.sf.net/gwenview/gwenview-%{version}.tar.bz2
 Source1:        http://dl.sf.net/gwenview/gwenview-i18n-%{version}.tar.bz2
-# Patch for libexif >= 0.6.13
-Patch0:         gwenview-1.4.0-libexif.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  kdelibs-devel >= 6:3.1
 BuildRequires:  desktop-file-utils
 BuildRequires:  libkipi-devel
 BuildRequires:  gettext
-BuildRequires:  libexif-devel
 BuildRequires:  exiv2-devel
 %if "%{fedora}" >= "5"
 BuildRequires:  libXt-devel
@@ -36,9 +33,6 @@ so it supports all image formats your Qt installation supports.
 
 %prep
 %setup -q -a 1
-%if "%{fedora}" >= "6"
-%patch0 -p0
-%endif
 
 
 %build
@@ -117,6 +111,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Nov 27 2006 Aurelien Bompard <abompard@fedoraproject.org> 1.4.1-2
+- remove patch (gwenview now uses exiv2 instead of libexif)
+
 * Mon Nov 27 2006 Aurelien Bompard <abompard@fedoraproject.org> 1.4.1-1
 - version 1.4.1
 
