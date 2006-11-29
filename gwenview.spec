@@ -1,6 +1,6 @@
 Name:           gwenview
 Version:        1.4.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Simple image viewer for KDE
 
 Group:          Applications/Multimedia
@@ -111,6 +111,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Nov 29 2006 Aurelien Bompard <abompard@fedoraproject.org> 1.4.1-3
+- rebuild
+
 * Mon Nov 27 2006 Aurelien Bompard <abompard@fedoraproject.org> 1.4.1-2
 - remove patch (gwenview now uses exiv2 instead of libexif)
 
