@@ -1,6 +1,6 @@
 Name:           gwenview
 Version:        1.4.1
-Release:        3%{?dist}
+Release:        3%{?dist}.1
 Summary:        Simple image viewer for KDE
 
 Group:          Applications/Multimedia
@@ -10,12 +10,12 @@ Source0:        http://dl.sf.net/gwenview/gwenview-%{version}.tar.bz2
 Source1:        http://dl.sf.net/gwenview/gwenview-i18n-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires:  kdelibs-devel >= 6:3.1
+BuildRequires:  kdelibs-devel 
 BuildRequires:  desktop-file-utils
 BuildRequires:  libkipi-devel
 BuildRequires:  gettext
 BuildRequires:  exiv2-devel
-%if "%{fedora}" >= "5"
+%if 0%{?fedora} > 4 || 0%{?rhel} > 4
 BuildRequires:  libXt-devel
 %endif
 
@@ -37,10 +37,10 @@ so it supports all image formats your Qt installation supports.
 
 %build
 unset QTDIR && . %{_sysconfdir}/profile.d/qt.sh
-# work around an improper ${kdelibsuff}
-export QTLIB=${QTDIR}/lib QTINC=${QTDIR}/include
+
 %configure --disable-rpath --disable-debug --enable-kipi
 # --enable-final  \
+
 make %{?_smp_mflags}
 
 cd %{name}-i18n-%{version}
@@ -111,6 +111,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Apr 25 2007 Rex Dieter <rdieter[AT]fedoraproject.org> 1.4.1-3.1 
+- respin for exiv2-0.14
+
 * Wed Nov 29 2006 Aurelien Bompard <abompard@fedoraproject.org> 1.4.1-3
 - rebuild
 
