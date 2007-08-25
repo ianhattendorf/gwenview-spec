@@ -1,10 +1,10 @@
 Name:           gwenview
 Version:        1.4.1
-Release:        3%{?dist}.1
+Release:        4%{?dist}
 Summary:        Simple image viewer for KDE
 
 Group:          Applications/Multimedia
-License:        GPL
+License:        GPLv2+
 URL:            http://gwenview.sf.net
 Source0:        http://dl.sf.net/gwenview/gwenview-%{version}.tar.bz2
 Source1:        http://dl.sf.net/gwenview/gwenview-i18n-%{version}.tar.bz2
@@ -111,6 +111,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Aug 25 2007 Aurelien Bompard <abompard@fedoraproject.org> 1.4.1-4
+- rebuild for BuildID
+- fix license tag
+
 * Mon Apr 25 2007 Rex Dieter <rdieter[AT]fedoraproject.org> 1.4.1-3.1 
 - respin for exiv2-0.14
 
