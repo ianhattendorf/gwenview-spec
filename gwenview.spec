@@ -1,6 +1,6 @@
 Name:           gwenview
-Version:        1.4.1
-Release:        4%{?dist}
+Version:        1.4.2
+Release:        1%{?dist}
 Summary:        Simple image viewer for KDE
 
 Group:          Applications/Multimedia
@@ -93,7 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
-%doc AUTHORS COPYING NEWS README TODO
+%doc AUTHORS COPYING NEWS README
 %{_bindir}/*
 %{_datadir}/applications/kde/*.desktop
 %{_datadir}/apps/konqueror/servicemenus/*
@@ -111,6 +111,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Nov 14 2007 Aurelien Bompard <abompard@fedoraproject.org> 1.4.2-1
+- version 1.4.2
+
 * Sat Aug 25 2007 Aurelien Bompard <abompard@fedoraproject.org> 1.4.1-4
 - rebuild for BuildID
 - fix license tag
