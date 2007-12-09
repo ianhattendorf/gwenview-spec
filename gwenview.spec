@@ -1,6 +1,6 @@
 Name:           gwenview
 Version:        1.4.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Simple image viewer for KDE
 
 Group:          Applications/Multimedia
@@ -10,7 +10,7 @@ Source0:        http://dl.sf.net/gwenview/gwenview-%{version}.tar.bz2
 Source1:        http://dl.sf.net/gwenview/gwenview-i18n-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires:  kdelibs-devel 
+BuildRequires:  kdelibs3-devel 
 BuildRequires:  desktop-file-utils
 BuildRequires:  libkipi-devel
 BuildRequires:  gettext
@@ -111,6 +111,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Dec 09 2007 Rex Dieter <rdieter[AT]fedoraproject.org> 1.4.2-2
+- BR: kdelibs3-devel
+
 * Wed Nov 14 2007 Aurelien Bompard <abompard@fedoraproject.org> 1.4.2-1
 - version 1.4.2
 
