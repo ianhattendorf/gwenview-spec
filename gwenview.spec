@@ -2,9 +2,11 @@
 Name:    gwenview 
 Summary: An image viewer
 Version: 4.6.95
-Release: 1%{?dist}
+Release: 2%{?dist}
 
-License: GPLv2
+# app: GPLv2+
+# lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
+License: GPLv2+
 URL:     https://projects.kde.org/projects/kde/kdegraphics/gwenview 
 Source0: ftp://ftp.kde.org/pub/kde/unstable/%{version}/src/%{name}-%{version}.tar.bz2
 
@@ -27,6 +29,8 @@ Conflicts: kdegraphics < 7:4.6.95-10
 
 %package  libs 
 Summary:  Runtime files for %{name} 
+# wrt (LGPLv2 or LGPLv3), KDE e.V. may determine that future GPL versions are accepted 
+License:  IJG and LGPLv2+ and GPLv2+ and LGPLv2 or LGPLv3
 Requires: %{name} = %{version}-%{release}
 %description libs 
 %{summary}.
@@ -69,6 +73,7 @@ update-desktop-database -q &> /dev/null ||:
 if [ $1 -eq 0 ] ; then
 touch --no-create %{_kde4_iconsdir}/hicolor &> /dev/null || :
 gtk-update-icon-cache %{_kde4_iconsdir}/hicolor &> /dev/null || :
+update-desktop-database -q &> /dev/null ||:
 fi
 
 %post libs -p /sbin/ldconfig
@@ -90,10 +95,16 @@ fi
 %{_kde4_libdir}/kde4/gvpart.so
 
 %files libs
+%doc lib/libjpeg-80/README.jpeg
 %{_kde4_libdir}/libgwenviewlib.so.4*
 
 
 %changelog
+* Mon Jul 18 2011 Rex Dieter <rdieter@fedoraproject.org> 4.6.95-2
+- License: GPLv2+
+- -libs: License: IJG and LGPLv2+ and GPLv2+ and LGPLv2 or LGPLv3
+- %%postun: +update-desktop-database
+
 * Mon Jul 11 2011 Rex Dieter <rdieter@fedoraproject.org> 4.6.95-1
 - 4.6.95
 - update URL 
