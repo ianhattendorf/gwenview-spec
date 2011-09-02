@@ -1,7 +1,6 @@
-
 Name:    gwenview 
 Summary: An image viewer
-Version: 4.7.0
+Version: 4.7.1
 Release: 1%{?dist}
 
 # app: GPLv2+
@@ -100,6 +99,9 @@ fi
 
 
 %changelog
+* Fri Sep 02 2011 Than Ngo <than@redhat.com> - 4.7.1-1
+- 4.7.1
+
 * Tue Jul 26 2011 Jaroslav Reznik <jreznik@redhat.com> 4.7.0-1
 - 4.7.0
 
