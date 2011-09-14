@@ -1,7 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
 Version: 4.7.1
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -12,7 +12,7 @@ Source0: ftp://ftp.kde.org/pub/kde/unstable/%{version}/src/%{name}-%{version}.ta
 BuildRequires: desktop-file-utils
 BuildRequires: exiv2-devel
 # libkonq
-BuildRequires: kdebase4-devel
+BuildRequires: kdebase4-devel >= %{version}
 BuildRequires: kdelibs4-devel >= %{version}
 BuildRequires: libkipi-devel >= %{version}
 BuildRequires: libjpeg-devel
@@ -99,6 +99,9 @@ fi
 
 
 %changelog
+* Wed Sep 14 2011 Radek Novacek <rnovacek@redhat.com> - 4.7.1-2
+- Make BR: kdebase4-devel versioned
+
 * Fri Sep 02 2011 Than Ngo <than@redhat.com> - 4.7.1-1
 - 4.7.1
 
