@@ -1,7 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
-Version: 4.7.1
-Release: 2%{?dist}
+Version: 4.7.2
+Release: 1%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -99,6 +99,9 @@ fi
 
 
 %changelog
+* Wed Oct 05 2011 Rex Dieter <rdieter@fedoraproject.org> 4.7.2-1
+- 4.7.2
+
 * Wed Sep 14 2011 Radek Novacek <rnovacek@redhat.com> - 4.7.1-2
 - Make BR: kdebase4-devel versioned
 
