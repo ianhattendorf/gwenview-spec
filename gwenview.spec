@@ -1,7 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
-Version: 4.7.2
-Release: 2%{?dist}
+Version: 4.7.3
+Release: 1%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -10,12 +10,12 @@ URL:     https://projects.kde.org/projects/kde/kdegraphics/gwenview
 Source0: ftp://ftp.kde.org/pub/kde/unstable/%{version}/src/%{name}-%{version}.tar.bz2
 
 BuildRequires: desktop-file-utils
-BuildRequires: exiv2-devel
 # libkonq
 BuildRequires: kdebase4-devel >= %{version}
 BuildRequires: kdelibs4-devel >= %{version}
 BuildRequires: libkipi-devel >= %{version}
 BuildRequires: libjpeg-devel
+BuildRequires: pkgconfig(exiv2)
 
 Requires: %{name}-libs%{?_isa} = %{version}-%{release}
 Requires: kdebase-runtime%{?_kde4_version: >= %{_kde4_version}}
@@ -99,6 +99,9 @@ fi
 
 
 %changelog
+* Sat Oct 29 2011 Rex Dieter <rdieter@fedoraproject.org> 4.7.3-1
+- 4.7.3
+
 * Fri Oct 14 2011 Rex Dieter <rdieter@fedoraproject.org> - 4.7.2-2
 - rebuild (exiv2)
 
