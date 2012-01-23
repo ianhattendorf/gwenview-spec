@@ -6,8 +6,14 @@ Release: 1%{?dist}
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
 License: GPLv2+
-URL:     https://projects.kde.org/projects/kde/kdegraphics/gwenview 
-Source0: ftp://ftp.kde.org/pub/kde/unstable/%{version}/src/%{name}-%{version}.tar.bz2
+URL:     https://projects.kde.org/projects/kde/kdegraphics/gwenview
+%global revision %(echo %{version} | cut -d. -f3)
+%if %{revision} >= 50
+%global stable unstable
+%else
+%global stable stable
+%endif 
+Source0: ftp://ftp.kde.org/pub/kde/%{stable}/%{version}/src/%{name}-%{version}.tar.bz2
 
 BuildRequires: desktop-file-utils
 # libkonq
