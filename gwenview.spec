@@ -1,6 +1,6 @@
 Name:    gwenview 
 Summary: An image viewer
-Version: 4.8.0
+Version: 4.8.1
 Release: 1%{?dist}
 
 # app: GPLv2+
@@ -13,7 +13,7 @@ URL:     https://projects.kde.org/projects/kde/kdegraphics/gwenview
 %else
 %global stable stable
 %endif 
-Source0: ftp://ftp.kde.org/pub/kde/%{stable}/%{version}/src/%{name}-%{version}.tar.bz2
+Source0: ftp://ftp.kde.org/pub/kde/%{stable}/%{version}/src/%{name}-%{version}.tar.xz
 
 BuildRequires: desktop-file-utils
 # libkonq
@@ -105,6 +105,9 @@ fi
 
 
 %changelog
+* Mon Mar 05 2012 Jaroslav Reznik <jreznik@redhat.com> - 4.8.1-1
+- 4.8.1
+
 * Sun Jan 22 2012 Rex Dieter <rdieter@fedoraproject.org> - 4.8.0-1
 - 4.8.0
 
