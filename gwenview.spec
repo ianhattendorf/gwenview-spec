@@ -1,7 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
 Version: 4.8.1
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -14,6 +14,12 @@ URL:     https://projects.kde.org/projects/kde/kdegraphics/gwenview
 %global stable stable
 %endif 
 Source0: ftp://ftp.kde.org/pub/kde/%{stable}/%{version}/src/%{name}-%{version}.tar.xz
+
+## upstream patches
+# https://projects.kde.org/projects/kde/kdegraphics/gwenview/repository/revisions/2945372b9c20a7041858a861aa11385551dd506b
+Patch100: gwenview-4.8.1-gvpart_cursor.patch
+# https://projects.kde.org/projects/kde/kdegraphics/gwenview/repository/revisions/83f424c9feb291e491920357d4ad6949e767e169
+Patch101: gwenview-4.8.1-gvpart_documentviewcontainter.patch
 
 BuildRequires: desktop-file-utils
 # libkonq
@@ -43,6 +49,9 @@ Requires: %{name} = %{version}-%{release}
 
 %prep
 %setup -q
+
+%patch100 -p1 -b .gvpart_cursor
+%patch101 -p1 -b .gvpart_documentviewcontainer
 
 
 %build
@@ -105,6 +114,9 @@ fi
 
 
 %changelog
+* Mon Mar 12 2012 Rex Dieter <rdieter@fedoraproject.org> 4.8.1-2
+- gvpart fixes (#784683,kde#292394)
+
 * Mon Mar 05 2012 Jaroslav Reznik <jreznik@redhat.com> - 4.8.1-1
 - 4.8.1
 
