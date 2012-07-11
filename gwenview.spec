@@ -19,7 +19,7 @@ Source0: ftp://ftp.kde.org/pub/kde/%{stable}/%{version}/src/%{name}-%{version}.t
 
 BuildRequires: desktop-file-utils
 # libkonq
-BuildRequires: kdebase4-devel >= %{version}
+BuildRequires: kde-baseapps-devel >= %{version}
 BuildRequires: kdelibs4-devel >= %{version}
 BuildRequires: libkipi-devel >= %{version}
 BuildRequires: libjpeg-devel
