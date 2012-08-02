@@ -1,6 +1,6 @@
 Name:    gwenview 
 Summary: An image viewer
-Version: 4.8.4
+Version: 4.8.5
 Release: 1%{?dist}
 
 # app: GPLv2+
@@ -107,6 +107,9 @@ fi
 
 
 %changelog
+* Thu Aug 02 2012 Rex Dieter <rdieter@fedoraproject.org> - 4.8.5-1
+- 4.8.5
+
 * Mon Jun 04 2012 Than Ngo <than@redhat.com> - 4.8.4-1
 - 4.8.4
 
