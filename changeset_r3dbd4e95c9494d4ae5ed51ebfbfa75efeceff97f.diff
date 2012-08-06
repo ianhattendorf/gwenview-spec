@@ -1,0 +1,35 @@
+commit 3dbd4e95c9494d4ae5ed51ebfbfa75efeceff97f
+Author: Benni Hill <benni@mytum.de>
+Date:   Thu Aug 2 18:06:44 2012 +0200
+
+    Stop thumbnailing when Gwenview exits.
+    
+    This is important as it blocks unmounting of flash drives.
+    
+    BUG: 302074
+    FIXED-IN: 2.9.1
+
+diff --git a/lib/thumbnailloadjob.cpp b/lib/thumbnailloadjob.cpp
+index 82722cd..9c9a2ee 100644
+--- a/lib/thumbnailloadjob.cpp
++++ b/lib/thumbnailloadjob.cpp
+@@ -424,6 +424,7 @@ ThumbnailLoadJob::~ThumbnailLoadJob()
+     if (!sThumbnailCache->isRunning()) {
+         sThumbnailCache->start();
+     }
++    sThumbnailCache->wait();
+ }
+ 
+ void ThumbnailLoadJob::start()
+diff --git a/lib/thumbnailview/thumbnailview.cpp b/lib/thumbnailview/thumbnailview.cpp
+index 525a47f..5b2b129 100644
+--- a/lib/thumbnailview/thumbnailview.cpp
++++ b/lib/thumbnailview/thumbnailview.cpp
+@@ -329,6 +329,7 @@ ThumbnailView::ThumbnailView(QWidget* parent)
+ 
+ ThumbnailView::~ThumbnailView()
+ {
++    delete d->mThumbnailLoadJob;
+     delete d;
+ }
+ 
