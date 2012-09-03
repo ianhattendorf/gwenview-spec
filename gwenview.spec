@@ -1,7 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
-Version: 4.9.0
-Release: 2%{?dist}
+Version: 4.9.1
+Release: 1%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -14,9 +14,6 @@ URL:     https://projects.kde.org/projects/kde/kdegraphics/gwenview
 %global stable stable
 %endif 
 Source0: ftp://ftp.kde.org/pub/kde/%{stable}/%{version}/src/%{name}-%{version}.tar.xz
-
-## upstream patches
-Patch0:     changeset_r3dbd4e95c9494d4ae5ed51ebfbfa75efeceff97f.diff
 
 BuildRequires: desktop-file-utils
 # libkonq
@@ -46,7 +43,6 @@ Requires: %{name} = %{version}-%{release}
 
 %prep
 %setup -q
-%patch0 -p1 -b .stop-thumbnails
 
 
 %build
@@ -109,6 +105,9 @@ fi
 
 
 %changelog
+* Mon Sep 03 2012 Than Ngo <than@redhat.com> - 4.9.1-1
+- 4.9.1
+
 * Mon Aug 6 2012 Lukas Tinkl <ltinkl@redhat.com> - 4.9.0-2
 - stop the thumbnailing when Gwenview exits; This is important as it
   blocks unmounting of flash drives
