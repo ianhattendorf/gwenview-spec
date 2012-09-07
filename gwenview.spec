@@ -1,6 +1,6 @@
 Name:    gwenview 
 Summary: An image viewer
-Version: 4.8.5
+Version: 4.9.1
 Release: 1%{?dist}
 
 # app: GPLv2+
@@ -15,11 +15,9 @@ URL:     https://projects.kde.org/projects/kde/kdegraphics/gwenview
 %endif 
 Source0: ftp://ftp.kde.org/pub/kde/%{stable}/%{version}/src/%{name}-%{version}.tar.xz
 
-## upstream patches
-
 BuildRequires: desktop-file-utils
 # libkonq
-BuildRequires: kdebase4-devel >= %{version}
+BuildRequires: kde-baseapps-devel >= %{version}
 BuildRequires: kdelibs4-devel >= %{version}
 BuildRequires: libkipi-devel >= %{version}
 BuildRequires: libjpeg-devel
@@ -107,11 +105,33 @@ fi
 
 
 %changelog
-* Thu Aug 02 2012 Rex Dieter <rdieter@fedoraproject.org> - 4.8.5-1
-- 4.8.5
+* Mon Sep 03 2012 Than Ngo <than@redhat.com> - 4.9.1-1
+- 4.9.1
 
-* Mon Jun 04 2012 Than Ngo <than@redhat.com> - 4.8.4-1
-- 4.8.4
+* Mon Aug 6 2012 Lukas Tinkl <ltinkl@redhat.com> - 4.9.0-2
+- stop the thumbnailing when Gwenview exits; This is important as it
+  blocks unmounting of flash drives
+
+* Thu Jul 26 2012 Lukas Tinkl <ltinkl@redhat.com> - 4.9.0-1
+- 4.9.0
+
+* Thu Jul 19 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 4.8.97-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
+
+* Wed Jul 11 2012 Rex Dieter <rdieter@fedoraproject.org> - 4.8.97-1
+- 4.8.97
+
+* Wed Jun 27 2012 Jaroslav Reznik <jreznik@redhat.com> - 4.8.95-1
+- 4.8.95
+
+* Sat Jun 09 2012 Rex Dieter <rdieter@fedoraproject.org> - 4.8.90-1
+- 4.8.90
+
+* Fri Jun 01 2012 Jaroslav Reznik <jreznik@redhat.com> - 4.8.80-1
+- 4.8.80
+
+* Wed May 02 2012 Rex Dieter <rdieter@fedoraproject.org> - 4.8.3-2
+- rebuild (exiv2)
 
 * Mon Apr 30 2012 Jaroslav Reznik <jreznik@redhat.com> - 4.8.3-1
 - 4.8.3
