@@ -1,7 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
 Version: 4.9.1
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -14,6 +14,11 @@ URL:     https://projects.kde.org/projects/kde/kdegraphics/gwenview
 %global stable stable
 %endif 
 Source0: ftp://ftp.kde.org/pub/kde/%{stable}/%{version}/src/%{name}-%{version}.tar.xz
+
+## upstream patches
+# Fix build with libkipi 2.0.0 http://quickgit.kde.org/index.php?p=gwenview.git&a=commitdiff&h=06561d86968d2cc2e3e5b486e054eb3f11a22caa
+Patch100: gwenview-libkipi.patch
+
 
 BuildRequires: desktop-file-utils
 # libkonq
@@ -43,6 +48,7 @@ Requires: %{name} = %{version}-%{release}
 
 %prep
 %setup -q
+%patch100 -p1 -b .libkipi
 
 
 %build
@@ -105,6 +111,9 @@ fi
 
 
 %changelog
+* Fri Sep 21 2012 Alexey Kurov <nucleo@fedoraproject.org> - 4.9.1-2
+- rebuild (libkipi)
+
 * Mon Sep 03 2012 Than Ngo <than@redhat.com> - 4.9.1-1
 - 4.9.1
 

@@ -1,0 +1,34 @@
+From: Victor Dodon <dodonvictor@gmail.com>
+Date: Thu, 06 Sep 2012 13:13:04 +0000
+Subject: Fix build with libkipi 2.0.0
+X-Git-Url: http://quickgit.kde.org/?p=gwenview.git&amp;a=commitdiff&amp;h=06561d86968d2cc2e3e5b486e054eb3f11a22caa
+---
+Fix build with libkipi 2.0.0
+---
+
+
+--- a/app/kipiinterface.cpp
++++ b/app/kipiinterface.cpp
+@@ -40,6 +40,7 @@
+ #include <libkipi/imageinfoshared.h>
+ #include <libkipi/plugin.h>
+ #include <libkipi/pluginloader.h>
++#include <libkipi/version.h>
+ 
+ // local
+ #include "mainwindow.h"
+@@ -250,7 +251,13 @@
+     d->mMenuInfoMap[KIPI::BatchPlugin]       = MenuInfo(i18nc("@title:menu", "Batch Processing"));
+     d->mMenuInfoMap[KIPI::CollectionsPlugin] = MenuInfo(i18nc("@title:menu", "Collections"));
+ 
++#if (KIPI_VERSION >= 0x020000)
++    d->mPluginLoader = new KIPI::PluginLoader();
++    d->mPluginLoader->setInterface(this);
++    d->mPluginLoader->init();
++#else
+     d->mPluginLoader = new KIPI::PluginLoader(QStringList(), this);
++#endif
+     d->mPluginQueue = d->mPluginLoader->pluginList();
+     d->mPluginMenu->addAction(d->mLoadingAction);
+     loadOnePlugin();
+
