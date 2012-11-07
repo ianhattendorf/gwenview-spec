@@ -1,6 +1,6 @@
 Name:    gwenview 
 Summary: An image viewer
-Version: 4.9.2
+Version: 4.9.3
 Release: 1%{?dist}
 
 # app: GPLv2+
@@ -107,6 +107,12 @@ fi
 
 
 %changelog
+* Sat Nov 03 2012 Rex Dieter <rdieter@fedoraproject.org> - 4.9.3-1
+- 4.9.3
+
+* Wed Oct 24 2012 Rex Dieter <rdieter@fedoraproject.org> 4.9.2-2
+- rebuild (libjpeg-turbo v8)
+
 * Sat Sep 29 2012 Rex Dieter <rdieter@fedoraproject.org> - 4.9.2-1
 - 4.9.2
 
