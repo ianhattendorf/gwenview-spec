@@ -24,6 +24,7 @@ BuildRequires: libkipi-devel >= %{version}
 BuildRequires: libjpeg-devel
 BuildRequires: pkgconfig(exiv2)
 BuildRequires: pkgconfig(lcms2)
+BuildRequires: pkgconfig(libpng)
 
 Requires: %{name}-libs%{?_isa} = %{version}-%{release}
 Requires: kde-runtime%{?_kde4_version: >= %{_kde4_version}}
