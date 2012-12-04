@@ -13,17 +13,17 @@ URL:     https://projects.kde.org/projects/kde/kdegraphics/gwenview
 %else
 %global stable stable
 %endif 
-Source0: ftp://ftp.kde.org/pub/kde/%{stable}/%{version}/src/%{name}-%{version}.tar.xz
-
-## upstream patches
+Source0: http://download.kde.org/%{stable}/%{version}/src/%{name}-%{version}.tar.xz
 
 BuildRequires: desktop-file-utils
+BuildRequires: kactivities-devel >= %{version}
 # libkonq
 BuildRequires: kde-baseapps-devel >= %{version}
 BuildRequires: kdelibs4-devel >= %{version}
 BuildRequires: libkipi-devel >= %{version}
 BuildRequires: libjpeg-devel
 BuildRequires: pkgconfig(exiv2)
+BuildRequires: pkgconfig(lcms2)
 
 Requires: %{name}-libs%{?_isa} = %{version}-%{release}
 Requires: kde-runtime%{?_kde4_version: >= %{_kde4_version}}
@@ -57,8 +57,6 @@ make %{?_smp_mflags} -C %{_target_platform}
 
 
 %install
-rm -rf %{buildroot}
-
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 # unpackaged files
