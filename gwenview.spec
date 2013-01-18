@@ -1,7 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
 Version: 4.9.97
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -106,6 +106,9 @@ fi
 
 
 %changelog
+* Fri Jan 18 2013 Adam Tkac <atkac redhat com> - 4.9.97-2
+- rebuild due to "jpeg8-ABI" feature drop
+
 * Fri Jan 04 2013 Rex Dieter <rdieter@fedoraproject.org> - 4.9.97-1
 - 4.9.97
 
