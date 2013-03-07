@@ -1,6 +1,6 @@
 Name:    gwenview 
 Summary: An image viewer
-Version: 4.9.5
+Version: 4.10.1
 Release: 1%{?dist}
 
 # app: GPLv2+
@@ -13,17 +13,18 @@ URL:     https://projects.kde.org/projects/kde/kdegraphics/gwenview
 %else
 %global stable stable
 %endif 
-Source0: ftp://ftp.kde.org/pub/kde/%{stable}/%{version}/src/%{name}-%{version}.tar.xz
-
-## upstream patches
+Source0: http://download.kde.org/%{stable}/%{version}/src/%{name}-%{version}.tar.xz
 
 BuildRequires: desktop-file-utils
+BuildRequires: kactivities-devel >= %{version}
 # libkonq
 BuildRequires: kde-baseapps-devel >= %{version}
 BuildRequires: kdelibs4-devel >= %{version}
 BuildRequires: libkipi-devel >= %{version}
 BuildRequires: libjpeg-devel
 BuildRequires: pkgconfig(exiv2)
+BuildRequires: pkgconfig(lcms2)
+BuildRequires: pkgconfig(libpng)
 
 Requires: %{name}-libs%{?_isa} = %{version}-%{release}
 Requires: kde-runtime%{?_kde4_version: >= %{_kde4_version}}
@@ -57,8 +58,6 @@ make %{?_smp_mflags} -C %{_target_platform}
 
 
 %install
-rm -rf %{buildroot}
-
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 # unpackaged files
@@ -107,8 +106,26 @@ fi
 
 
 %changelog
-* Sat Dec 29 2012 Rex Dieter <rdieter@fedoraproject.org> - 4.9.5-1
-- 4.9.5
+* Sat Mar 02 2013 Rex Dieter <rdieter@fedoraproject.org> - 4.10.1-1
+- 4.10.1
+
+* Fri Feb 01 2013 Rex Dieter <rdieter@fedoraproject.org> - 4.10.0-1
+- 4.10.0
+
+* Tue Jan 22 2013 Rex Dieter <rdieter@fedoraproject.org> - 4.9.98-1
+- 4.9.98
+
+* Fri Jan 18 2013 Adam Tkac <atkac redhat com> - 4.9.97-2
+- rebuild due to "jpeg8-ABI" feature drop
+
+* Fri Jan 04 2013 Rex Dieter <rdieter@fedoraproject.org> - 4.9.97-1
+- 4.9.97
+
+* Thu Dec 20 2012 Rex Dieter <rdieter@fedoraproject.org> - 4.9.95-1
+- 4.9.95
+
+* Tue Dec 04 2012 Rex Dieter <rdieter@fedoraproject.org> - 4.9.90-1
+- 4.9.90
 
 * Mon Dec 03 2012 Than Ngo <than@redhat.com> - 4.9.4-1
 - 4.9.4
