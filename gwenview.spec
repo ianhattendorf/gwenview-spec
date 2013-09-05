@@ -1,6 +1,6 @@
 Name:    gwenview 
 Summary: An image viewer
-Version: 4.10.4
+Version: 4.11.1
 Release: 1%{?dist}
 
 # app: GPLv2+
@@ -22,6 +22,7 @@ BuildRequires: kde-baseapps-devel >= %{version}
 BuildRequires: kdelibs4-devel >= %{version}
 BuildRequires: libkipi-devel >= %{version}
 BuildRequires: libjpeg-devel
+BuildRequires: nepomuk-core-devel >= %{version}
 BuildRequires: pkgconfig(exiv2)
 BuildRequires: pkgconfig(lcms2)
 BuildRequires: pkgconfig(libpng)
@@ -106,6 +107,21 @@ fi
 
 
 %changelog
+* Wed Sep 04 2013 Rex Dieter <rdieter@fedoraproject.org> - 4.11.1-1
+- 4.11.1
+
+* Thu Aug 08 2013 Than Ngo <than@redhat.com> - 4.11.0-1
+- 4.11.0
+
+* Thu Jul 25 2013 Rex Dieter <rdieter@fedoraproject.org> - 4.10.97-1
+- 4.10.97
+
+* Tue Jul 23 2013 Rex Dieter <rdieter@fedoraproject.org> - 4.10.95-1
+- 4.10.95
+
+* Fri Jun 28 2013 Rex Dieter <rdieter@fedoraproject.org> - 4.10.90-1
+- 4.10.90
+
 * Sat Jun 01 2013 Rex Dieter <rdieter@fedoraproject.org> - 4.10.4-1
 - 4.10.4
 
