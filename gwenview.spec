@@ -1,7 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
 Version: 4.11.97
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -107,6 +107,9 @@ fi
 
 
 %changelog
+* Tue Dec 03 2013 Rex Dieter <rdieter@fedoraproject.org> - 4.11.97-2
+- rebuild (exiv2)
+
 * Sun Dec 01 2013 Rex Dieter <rdieter@fedoraproject.org> - 4.11.97-1
 - 4.11.97
 
