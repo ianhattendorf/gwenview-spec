@@ -1,6 +1,6 @@
 Name:    gwenview 
 Summary: An image viewer
-Version: 4.11.3
+Version: 4.12.2
 Release: 1%{?dist}
 
 # app: GPLv2+
@@ -107,6 +107,27 @@ fi
 
 
 %changelog
+* Fri Jan 31 2014 Rex Dieter <rdieter@fedoraproject.org> - 4.12.2-1
+- 4.12.2
+
+* Fri Jan 10 2014 Rex Dieter <rdieter@fedoraproject.org> - 4.12.1-1
+- 4.12.1
+
+* Thu Dec 19 2013 Rex Dieter <rdieter@fedoraproject.org> - 4.12.0-1
+- 4.12.0
+
+* Tue Dec 03 2013 Rex Dieter <rdieter@fedoraproject.org> - 4.11.97-2
+- rebuild (exiv2)
+
+* Sun Dec 01 2013 Rex Dieter <rdieter@fedoraproject.org> - 4.11.97-1
+- 4.11.97
+
+* Thu Nov 21 2013 Rex Dieter <rdieter@fedoraproject.org> - 4.11.95-1
+- 4.11.95
+
+* Sat Nov 16 2013 Rex Dieter <rdieter@fedoraproject.org> - 4.11.90-1
+- 4.11.90
+
 * Sat Nov 02 2013 Rex Dieter <rdieter@fedoraproject.org> - 4.11.3-1
 - 4.11.3
 
