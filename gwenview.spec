@@ -21,6 +21,8 @@ BuildRequires: kactivities-devel >= %{version}
 # libkonq
 BuildRequires: kde-baseapps-devel >= %{version}
 BuildRequires: kdelibs4-devel >= %{version}
+BuildRequires: kfilemetadata-devel >= %{version}
+BuildRequires: libkdcraw-devel >= %{version}
 BuildRequires: libkipi-devel >= %{version}
 BuildRequires: libjpeg-devel
 BuildRequires: pkgconfig(exiv2)
