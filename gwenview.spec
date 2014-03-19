@@ -15,6 +15,7 @@ URL:     https://projects.kde.org/projects/kde/kdegraphics/gwenview
 %endif 
 Source0: http://download.kde.org/%{stable}/%{version}/src/%{name}-%{version}.tar.xz
 
+BuildRequires: baloo-devel >= %{version}
 BuildRequires: desktop-file-utils
 BuildRequires: kactivities-devel >= %{version}
 # libkonq
@@ -22,7 +23,6 @@ BuildRequires: kde-baseapps-devel >= %{version}
 BuildRequires: kdelibs4-devel >= %{version}
 BuildRequires: libkipi-devel >= %{version}
 BuildRequires: libjpeg-devel
-BuildRequires: nepomuk-core-devel >= %{version}
 BuildRequires: pkgconfig(exiv2)
 BuildRequires: pkgconfig(lcms2)
 BuildRequires: pkgconfig(libpng)
