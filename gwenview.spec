@@ -1,7 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
 Version: 4.13.1
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -109,6 +109,9 @@ fi
 
 
 %changelog
+* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 4.13.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
 * Sun May 11 2014 Rex Dieter <rdieter@fedoraproject.org> - 4.13.1-1
 - 4.13.1
 
