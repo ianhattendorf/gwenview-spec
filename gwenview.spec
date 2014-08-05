@@ -17,7 +17,7 @@ Source0: http://download.kde.org/%{stable}/%{version}/src/%{name}-%{version}.tar
 
 BuildRequires: baloo-devel >= %{version}
 BuildRequires: desktop-file-utils
-BuildRequires: kactivities-devel >= %{version}
+BuildRequires: kactivities-devel
 # libkonq
 BuildRequires: kde-baseapps-devel >= %{version}
 BuildRequires: kdelibs4-devel >= %{version}
