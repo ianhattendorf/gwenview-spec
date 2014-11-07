@@ -1,7 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
 Version: 4.14.2
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -14,6 +14,7 @@ URL:     https://projects.kde.org/projects/kde/kdegraphics/gwenview
 %global stable stable
 %endif 
 Source0: http://download.kde.org/%{stable}/%{version}/src/%{name}-%{version}.tar.xz
+Source1: gwenview.appdata.xml
 
 BuildRequires: baloo-devel >= %{version}
 BuildRequires: desktop-file-utils
@@ -22,6 +23,9 @@ BuildRequires: kactivities-devel
 BuildRequires: kde-baseapps-devel >= %{version}
 BuildRequires: kdelibs4-devel >= %{version}
 BuildRequires: kfilemetadata-devel >= %{version}
+%if 0%{?fedora} > 19
+BuildRequires: libappstream-glib
+%endif
 BuildRequires: libkdcraw-devel >= %{version}
 BuildRequires: libkipi-devel >= %{version}
 BuildRequires: libjpeg-devel
@@ -61,13 +65,18 @@ make %{?_smp_mflags} -C %{_target_platform}
 
 
 %install
+# install this first to ensure it gets replaced when/if upstream includes it's own
+install -m644 -D %{SOURCE1} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
+
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+
 
 # unpackaged files
 rm -fv %{buildroot}%{_kde4_libdir}/libgwenviewlib.so
 
 
 %check
+appstream-util validate-relax --nonet %{buildroot}%{_kde4_datadir}/appdata/%{name}.appdata.xml ||:
 desktop-file-validate %{buildroot}%{_kde4_datadir}/applications/kde4/gwenview.desktop
 
 
@@ -96,6 +105,7 @@ fi
 %{_kde4_appsdir}/solid/actions/%{name}*.desktop
 %{_kde4_datadir}/kde4/services/ServiceMenus/*.desktop
 %{_kde4_datadir}/applications/kde4/%{name}.desktop
+%{_datadir}/appdata/%{name}.appdata.xml
 %{_kde4_iconsdir}/hicolor/*/*/*
 %{_kde4_docdir}/HTML/en/%{name}/
 # split gvpart?
@@ -109,6 +119,9 @@ fi
 
 
 %changelog
+* Fri Nov 07 2014 Rex Dieter <rdieter@fedoraproject.org> 4.14.2-2
+- pull in appdata from upstream master/ branch 
+
 * Sun Oct 12 2014 Rex Dieter <rdieter@fedoraproject.org> - 4.14.2-1
 - 4.14.2
 
