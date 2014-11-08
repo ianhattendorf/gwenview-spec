@@ -1,7 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
-Version: 4.14.2
-Release: 2%{?dist}
+Version: 4.14.3
+Release: 1%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -119,6 +119,9 @@ fi
 
 
 %changelog
+* Sat Nov 08 2014 Rex Dieter <rdieter@fedoraproject.org> - 4.14.3-1
+- 4.14.3
+
 * Fri Nov 07 2014 Rex Dieter <rdieter@fedoraproject.org> 4.14.2-2
 - pull in appdata from upstream master/ branch 
 
