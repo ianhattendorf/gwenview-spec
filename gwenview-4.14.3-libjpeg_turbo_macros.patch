@@ -1,0 +1,32 @@
+diff -up gwenview-4.14.3/lib/cms/iccjpeg.h.JPP gwenview-4.14.3/lib/cms/iccjpeg.h
+--- gwenview-4.14.3/lib/cms/iccjpeg.h.JPP	2014-09-30 04:11:42.000000000 -0500
++++ gwenview-4.14.3/lib/cms/iccjpeg.h	2014-11-17 08:25:25.348673307 -0600
+@@ -43,6 +43,14 @@
+ #include <stdio.h>      /* needed to define "FILE", "NULL" */
+ #include "jpeglib.h"
+ 
++#ifndef JPP
++#define JPP(x) x
++#endif
++
++#ifndef FAR
++#define FAR
++#endif
++
+ 
+ /*
+  * This routine writes the given ICC profile data into a JPEG file.
+diff -up gwenview-4.14.3/lib/libjpeg-62/transupp.h.JPP gwenview-4.14.3/lib/libjpeg-62/transupp.h
+--- gwenview-4.14.3/lib/libjpeg-62/transupp.h.JPP	2014-09-30 04:11:42.000000000 -0500
++++ gwenview-4.14.3/lib/libjpeg-62/transupp.h	2014-11-17 08:28:06.722555021 -0600
+@@ -35,6 +35,10 @@
+ #define jcopy_markers_execute           jCMrkExec
+ #endif /* NEED_SHORT_EXTERNAL_NAMES */
+ 
++#ifndef JPP
++#define JPP(x) x
++#endif
++
+ /*
+  * Codes for supported types of image transformations.
+  */

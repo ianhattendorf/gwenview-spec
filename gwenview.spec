@@ -1,7 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
 Version: 4.14.3
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -15,6 +15,10 @@ URL:     https://projects.kde.org/projects/kde/kdegraphics/gwenview
 %endif 
 Source0: http://download.kde.org/%{stable}/%{version}/src/%{name}-%{version}.tar.xz
 Source1: gwenview.appdata.xml
+
+## upstreamable patches
+# FTBFS against newer libjpeg-turbo (which no longer defines some macros)
+Patch1: gwenview-4.14.3-libjpeg_turbo_macros.patch
 
 BuildRequires: baloo-devel >= %{version}
 BuildRequires: desktop-file-utils
@@ -54,6 +58,8 @@ Requires: %{name} = %{version}-%{release}
 %prep
 %setup -q
 
+%patch1 -p1 -b .libjpeg_turbo_macros
+
 
 %build
 mkdir -p %{_target_platform}
@@ -69,6 +75,8 @@ make %{?_smp_mflags} -C %{_target_platform}
 install -m644 -D %{SOURCE1} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+
+%find_lang gwenview --with-kde
 
 
 # unpackaged files
@@ -98,7 +106,7 @@ fi
 %postun libs -p /sbin/ldconfig
 
 
-%files
+%files -f gwenview.lang
 %doc COPYING 
 %{_kde4_bindir}/%{name}*
 %{_kde4_appsdir}/%{name}/
@@ -107,18 +115,21 @@ fi
 %{_kde4_datadir}/applications/kde4/%{name}.desktop
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_kde4_iconsdir}/hicolor/*/*/*
-%{_kde4_docdir}/HTML/en/%{name}/
 # split gvpart?
 %{_kde4_appsdir}/gvpart/
 %{_kde4_datadir}/kde4/services/gvpart.desktop
 %{_kde4_libdir}/kde4/gvpart.so
 
 %files libs
-%doc lib/libjpeg-80/README.jpeg
+%doc lib/libjpeg-62/README.jpeg
 %{_kde4_libdir}/libgwenviewlib.so.4*
 
 
 %changelog
+* Mon Nov 17 2014 Rex Dieter <rdieter@fedoraproject.org> - 4.14.3-2
+- fix/workaround FTBFS against new libjpeg-turbo (#1163476)
+- use %%find_lang
+
 * Sat Nov 08 2014 Rex Dieter <rdieter@fedoraproject.org> - 4.14.3-1
 - 4.14.3
 
