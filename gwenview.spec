@@ -1,7 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
 Version: 4.14.3
-Release: 2%{?dist}
+Release: 3%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -17,8 +17,6 @@ Source0: http://download.kde.org/%{stable}/%{version}/src/%{name}-%{version}.tar
 Source1: gwenview.appdata.xml
 
 ## upstreamable patches
-# FTBFS against newer libjpeg-turbo (which no longer defines some macros)
-Patch1: gwenview-4.14.3-libjpeg_turbo_macros.patch
 
 BuildRequires: baloo-devel >= %{version}
 BuildRequires: desktop-file-utils
@@ -57,8 +55,6 @@ Requires: %{name} = %{version}-%{release}
 
 %prep
 %setup -q
-
-%patch1 -p1 -b .libjpeg_turbo_macros
 
 
 %build
@@ -126,6 +122,9 @@ fi
 
 
 %changelog
+* Wed Nov 26 2014 Rex Dieter <rdieter@fedoraproject.org> 4.14.3-3
+- drop libjpeg-turbo workaround
+
 * Mon Nov 17 2014 Rex Dieter <rdieter@fedoraproject.org> - 4.14.3-2
 - fix/workaround FTBFS against new libjpeg-turbo (#1163476)
 - use %%find_lang
