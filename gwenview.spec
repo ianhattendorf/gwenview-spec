@@ -1,7 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
 Version: 4.14.3
-Release: 3%{?dist}
+Release: 4%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -18,25 +18,25 @@ Source1: gwenview.appdata.xml
 
 ## upstreamable patches
 
-BuildRequires: baloo-devel >= %{version}
+BuildRequires: baloo-devel >= 4.14
 BuildRequires: desktop-file-utils
 BuildRequires: kactivities-devel
 # libkonq
-BuildRequires: kde-baseapps-devel >= %{version}
-BuildRequires: kdelibs4-devel >= %{version}
-BuildRequires: kfilemetadata-devel >= %{version}
+BuildRequires: kde-baseapps-devel >= 4.14
+BuildRequires: kdelibs4-devel >= 4.14
+BuildRequires: kfilemetadata-devel >= 4.14
 %if 0%{?fedora} > 19
 BuildRequires: libappstream-glib
 %endif
-BuildRequires: libkdcraw-devel >= %{version}
-BuildRequires: libkipi-devel >= %{version}
+BuildRequires: libkdcraw-devel >= 4.14
+BuildRequires: libkipi-devel >= 4.14
 BuildRequires: libjpeg-devel
 BuildRequires: pkgconfig(exiv2)
 BuildRequires: pkgconfig(lcms2)
 BuildRequires: pkgconfig(libpng)
 
 Requires: %{name}-libs%{?_isa} = %{version}-%{release}
-Requires: kde-runtime%{?_kde4_version: >= %{_kde4_version}}
+%{?kde_runtime_requires}
 
 # when split occurred
 Conflicts: kdegraphics < 7:4.6.95-10
@@ -58,7 +58,7 @@ Requires: %{name} = %{version}-%{release}
 
 
 %build
-mkdir -p %{_target_platform}
+mkdir %{_target_platform}
 pushd %{_target_platform}
 %{cmake_kde4} ..
 popd
@@ -122,6 +122,9 @@ fi
 
 
 %changelog
+* Sat Jan 17 2015 Rex Dieter <rdieter@fedoraproject.org> 4.14.3-4
+- kde-applications fixes, cleanup
+
 * Wed Nov 26 2014 Rex Dieter <rdieter@fedoraproject.org> 4.14.3-3
 - drop libjpeg-turbo workaround
 
