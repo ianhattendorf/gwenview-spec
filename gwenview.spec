@@ -1,7 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
-Version: 4.14.3
-Release: 4%{?dist}
+Version: 15.04.0
+Release: 1%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -13,7 +13,7 @@ URL:     https://projects.kde.org/projects/kde/kdegraphics/gwenview
 %else
 %global stable stable
 %endif 
-Source0: http://download.kde.org/%{stable}/%{version}/src/%{name}-%{version}.tar.xz
+Source0: http://download.kde.org/%{stable}/applications/%{version}/src/%{name}-%{version}.tar.xz
 Source1: gwenview.appdata.xml
 
 ## upstreamable patches
@@ -122,6 +122,9 @@ fi
 
 
 %changelog
+* Wed Apr 15 2015 Rex Dieter <rdieter@fedoraproject.org> - 15.04.0-1
+- 15.04.0
+
 * Sat Jan 17 2015 Rex Dieter <rdieter@fedoraproject.org> 4.14.3-4
 - kde-applications fixes, cleanup
 
