@@ -14,29 +14,27 @@ URL:     https://projects.kde.org/projects/kde/kdegraphics/gwenview
 %global stable stable
 %endif 
 Source0: http://download.kde.org/%{stable}/applications/%{version}/src/%{name}-%{version}.tar.xz
-Source1: gwenview.appdata.xml
 
 ## upstreamable patches
 
-BuildRequires: baloo-devel >= 4.14
+BuildRequires: cmake 
 BuildRequires: desktop-file-utils
-BuildRequires: kactivities-devel
-# libkonq
-BuildRequires: kde-baseapps-devel >= 4.14
-BuildRequires: kdelibs4-devel >= 4.14
-BuildRequires: kfilemetadata-devel >= 4.14
-%if 0%{?fedora} > 19
+BuildRequires: kf5-kactivities-devel
+buildRequires: kf5-kdelibs4support-devel
+BuildRequires: kf5-kio-devel
+## frameworks soon to come (hopefully) -- rex
+#BuildRequires: kf5-kdcraw-devel
+#BuildRequires: kf5-kipi-devel
 BuildRequires: libappstream-glib
-%endif
-BuildRequires: libkdcraw-devel >= 4.14
-BuildRequires: libkipi-devel >= 4.14
 BuildRequires: libjpeg-devel
 BuildRequires: pkgconfig(exiv2)
 BuildRequires: pkgconfig(lcms2)
 BuildRequires: pkgconfig(libpng)
+BuildRequires: pkgconfig(phonon4qt5)
+BuildRequires: pkgconfig(Qt5DBus) pkgconfig(Qt5Widgets) pkgconfig(Qt5Script) pkgconfig(Qt5Test)
+BuildRequires: pkgconfig(Qt5Concurrent) pkgconfig(Qt5Svg) pkgconfig(Qt5OpenGL)
 
 Requires: %{name}-libs%{?_isa} = %{version}-%{release}
-%{?kde_runtime_requires}
 
 # when split occurred
 Conflicts: kdegraphics < 7:4.6.95-10
@@ -60,65 +58,52 @@ Requires: %{name} = %{version}-%{release}
 %build
 mkdir %{_target_platform}
 pushd %{_target_platform}
-%{cmake_kde4} ..
+%{cmake_kf5} ..
 popd
 
 make %{?_smp_mflags} -C %{_target_platform}
 
 
 %install
-# install this first to ensure it gets replaced when/if upstream includes it's own
-install -m644 -D %{SOURCE1} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
-
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
-
-%find_lang gwenview --with-kde
-
-
-# unpackaged files
-rm -fv %{buildroot}%{_kde4_libdir}/libgwenviewlib.so
 
 
 %check
-appstream-util validate-relax --nonet %{buildroot}%{_kde4_datadir}/appdata/%{name}.appdata.xml ||:
-desktop-file-validate %{buildroot}%{_kde4_datadir}/applications/kde4/gwenview.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_kf5_datadir}/appdata/%{name}.appdata.xml ||:
+desktop-file-validate %{buildroot}%{_kde4_datadir}/applications/org.kde.%{name}.desktop
 
 
 %post
-touch --no-create %{_kde4_iconsdir}/hicolor &> /dev/null || :
-
-%posttrans
-gtk-update-icon-cache %{_kde4_iconsdir}/hicolor &> /dev/null || :
-update-desktop-database -q &> /dev/null ||:
+touch --no-create %{_kf5_datadir}/icons/hicolor &> /dev/null || :
 
 %postun
 if [ $1 -eq 0 ] ; then
-touch --no-create %{_kde4_iconsdir}/hicolor &> /dev/null || :
-gtk-update-icon-cache %{_kde4_iconsdir}/hicolor &> /dev/null || :
-update-desktop-database -q &> /dev/null ||:
+touch --no-create %{_kf5_datadir}/icons/hicolor &> /dev/null
+gtk-update-icon-cache %{_kf5_datadir}/icons/hicolor &> /dev/null || :
 fi
+
+%posttrans
+gtk-update-icon-cache %{_kf5_datadir}/icons/hicolor &> /dev/null || :
+
+%files 
+%doc COPYING 
+%{_kf5_bindir}/%{name}*
+%{_kf5_datadir}/applications/org.kde.%{name}.desktop
+%{_datadir}/appdata/%{name}.appdata.xml
+%{_kf5_datadir}/icons/hicolor/*/*/*
+%{_kf5_docdir}/HTML/en/gwenview/
+%{_kf5_datadir}/gvpart/
+%{_kf5_datadir}/kservices5/gvpart.desktop
+%{_kf5_datadir}/gwenview/
+%{_kf5_datadir}/kservices5/ServiceMenus/slideshow.desktop
+%{_kf5_datadir}/kxmlgui5/gwenview/
 
 %post libs -p /sbin/ldconfig
 %postun libs -p /sbin/ldconfig
 
-
-%files -f gwenview.lang
-%doc COPYING 
-%{_kde4_bindir}/%{name}*
-%{_kde4_appsdir}/%{name}/
-%{_kde4_appsdir}/solid/actions/%{name}*.desktop
-%{_kde4_datadir}/kde4/services/ServiceMenus/*.desktop
-%{_kde4_datadir}/applications/kde4/%{name}.desktop
-%{_datadir}/appdata/%{name}.appdata.xml
-%{_kde4_iconsdir}/hicolor/*/*/*
-# split gvpart?
-%{_kde4_appsdir}/gvpart/
-%{_kde4_datadir}/kde4/services/gvpart.desktop
-%{_kde4_libdir}/kde4/gvpart.so
-
 %files libs
-%doc lib/libjpeg-62/README.jpeg
-%{_kde4_libdir}/libgwenviewlib.so.4*
+%{_kf5_libdir}/libgwenviewlib.so.*
+%{_kf5_qtplugindir}/gvpart.so
 
 
 %changelog
