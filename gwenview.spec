@@ -36,6 +36,7 @@ BuildRequires: pkgconfig(libpng)
 BuildRequires: pkgconfig(phonon4qt5)
 BuildRequires: pkgconfig(Qt5DBus) pkgconfig(Qt5Widgets) pkgconfig(Qt5Script) pkgconfig(Qt5Test)
 BuildRequires: pkgconfig(Qt5Concurrent) pkgconfig(Qt5Svg) pkgconfig(Qt5OpenGL)
+BuildRequires: pkgconfig(Qt5X11Extras)
 
 Requires: %{name}-libs%{?_isa} = %{version}-%{release}
 
