@@ -19,6 +19,7 @@ Source0: http://download.kde.org/%{stable}/applications/%{version}/src/%{name}-%
 
 BuildRequires: cmake 
 BuildRequires: desktop-file-utils
+BuildRequires: kf5-rpm-macros
 BuildRequires: kf5-kactivities-devel
 buildRequires: kf5-kdelibs4support-devel
 BuildRequires: kf5-kio-devel
