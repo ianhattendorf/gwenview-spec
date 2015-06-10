@@ -1,6 +1,6 @@
 Name:    gwenview 
 Summary: An image viewer
-Version: 15.04.1
+Version: 15.04.2
 Release: 1%{?dist}
 
 # app: GPLv2+
@@ -111,6 +111,9 @@ gtk-update-icon-cache %{_kf5_datadir}/icons/hicolor &> /dev/null || :
 
 
 %changelog
+* Wed Jun 10 2015 Rex Dieter <rdieter@fedoraproject.org> - 15.04.2-1
+- 15.04.2
+
 * Wed May 27 2015 Rex Dieter <rdieter@fedoraproject.org> - 15.04.1-1
 - 15.04.1
 
