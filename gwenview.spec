@@ -1,6 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
-Version: 15.08.0
+Epoch:   1
+Version: 15.08.3
 Release: 1%{?dist}
 
 # app: GPLv2+
@@ -38,7 +39,7 @@ BuildRequires: pkgconfig(Qt5DBus) pkgconfig(Qt5Widgets) pkgconfig(Qt5Script) pkg
 BuildRequires: pkgconfig(Qt5Concurrent) pkgconfig(Qt5Svg) pkgconfig(Qt5OpenGL)
 BuildRequires: pkgconfig(Qt5X11Extras)
 
-Requires: %{name}-libs%{?_isa} = %{version}-%{release}
+Requires: %{name}-libs%{?_isa} = %{epoch}:%{version}-%{release}
 
 # when split occurred
 Conflicts: kdegraphics < 7:4.6.95-10
@@ -50,7 +51,7 @@ Conflicts: kdegraphics < 7:4.6.95-10
 Summary:  Runtime files for %{name} 
 # wrt (LGPLv2 or LGPLv3), KDE e.V. may determine that future GPL versions are accepted 
 License:  IJG and LGPLv2+ and GPLv2+ and LGPLv2 or LGPLv3
-Requires: %{name} = %{version}-%{release}
+Requires: %{name} = %{epoch}:%{version}-%{release}
 %description libs 
 %{summary}.
 
@@ -71,10 +72,13 @@ make %{?_smp_mflags} -C %{_target_platform}
 %install
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
+mv %{buildroot}%{_kf5_datadir}/appdata/gwenview.appdata.xml \
+   %{buildroot}%{_kf5_datadir}/appdata/org.kde.gwenview.appdata.xml ||:
+
 
 %check
-appstream-util validate-relax --nonet %{buildroot}%{_kf5_datadir}/appdata/%{name}.appdata.xml ||:
-desktop-file-validate %{buildroot}%{_kde4_datadir}/applications/org.kde.%{name}.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_kf5_datadir}/appdata/org.kde.gwenview.appdata.xml ||:
+desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.gwenview.desktop
 
 
 %post
@@ -84,23 +88,23 @@ touch --no-create %{_kf5_datadir}/icons/hicolor &> /dev/null || :
 if [ $1 -eq 0 ] ; then
 touch --no-create %{_kf5_datadir}/icons/hicolor &> /dev/null
 gtk-update-icon-cache %{_kf5_datadir}/icons/hicolor &> /dev/null || :
+update-desktop-database -q &> /dev/null ||:
 fi
 
 %posttrans
 gtk-update-icon-cache %{_kf5_datadir}/icons/hicolor &> /dev/null || :
+update-desktop-database -q &> /dev/null ||:
 
 %files 
-%doc COPYING 
-%{_kf5_bindir}/%{name}*
-%{_kf5_datadir}/applications/org.kde.%{name}.desktop
-%{_datadir}/appdata/%{name}.appdata.xml
+%license COPYING
+%{_kf5_bindir}/gwenview
+%{_kf5_datadir}/applications/org.kde.gwenview.desktop
+%{_datadir}/appdata/org.kde.gwenview.appdata.xml
 %{_kf5_datadir}/icons/hicolor/*/*/*
 %{_kf5_docdir}/HTML/en/gwenview/
-%{_kf5_datadir}/gvpart/
-%{_kf5_datadir}/kservices5/gvpart.desktop
 %{_kf5_datadir}/gwenview/
 %{_kf5_datadir}/kservices5/ServiceMenus/slideshow.desktop
-%{_kf5_datadir}/kxmlgui5/gwenview/
+%{_kf5_datadir}/kxmlgui5/org.kde.gwenview/
 
 %post libs -p /sbin/ldconfig
 %postun libs -p /sbin/ldconfig
@@ -108,9 +112,17 @@ gtk-update-icon-cache %{_kf5_datadir}/icons/hicolor &> /dev/null || :
 %files libs
 %{_kf5_libdir}/libgwenviewlib.so.*
 %{_kf5_qtplugindir}/gvpart.so
+%{_kf5_datadir}/kxmlgui5/gvpart/
+%{_kf5_datadir}/kservices5/gvpart.desktop
 
 
 %changelog
+* Thu Nov 12 2015 Rex Dieter <rdieter@fedoraproject.org> - 1:15.08.3-1
+- 15.08.3
+- epoch: 1 (to match epoch introduced in f23 branch)
+- fix appdata
+- move all gvpart bits to -libs
+
 * Thu Aug 20 2015 Than Ngo <than@redhat.com> - 15.08.0-1
 - 15.08.0
 
