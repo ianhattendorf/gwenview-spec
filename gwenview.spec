@@ -1,13 +1,13 @@
 Name:    gwenview 
 Summary: An image viewer
 Epoch:   1
-Version: 15.08.3
+Version: 15.12.0
 Release: 1%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
 License: GPLv2+
-URL:     https://projects.kde.org/projects/kde/kdegraphics/gwenview
+URL:     https://projects.kde.org/gwenview
 %global revision %(echo %{version} | cut -d. -f3)
 %if %{revision} >= 50
 %global stable unstable
@@ -23,12 +23,15 @@ BuildRequires: desktop-file-utils
 BuildRequires: extra-cmake-modules
 BuildRequires: gettext
 BuildRequires: kf5-rpm-macros
+BuildRequires: kf5-baloo-devel
 BuildRequires: kf5-kactivities-devel
 buildRequires: kf5-kdelibs4support-devel
 BuildRequires: kf5-kio-devel
-## frameworks soon to come (hopefully) -- rex
-#BuildRequires: kf5-kdcraw-devel
-#BuildRequires: kf5-kipi-devel
+%if "%{?copr_projectname}" == "digikam"
+BuildRequires: kf5-libkdcraw-devel
+BuildRequires: kf5-libkipi-devel
+Recommends: kipi-plugins
+%endif
 BuildRequires: libappstream-glib
 BuildRequires: libjpeg-devel
 BuildRequires: pkgconfig(exiv2)
@@ -117,6 +120,9 @@ update-desktop-database -q &> /dev/null ||:
 
 
 %changelog
+* Wed Dec 30 2015 Rex Dieter <rdieter@fedoraproject.org> 15.12.0-1
+- 15.12.0
+
 * Thu Nov 12 2015 Rex Dieter <rdieter@fedoraproject.org> - 1:15.08.3-1
 - 15.08.3
 - epoch: 1 (to match epoch introduced in f23 branch)
