@@ -1,8 +1,8 @@
 Name:    gwenview 
 Summary: An image viewer
 Epoch:   1
-Version: 15.12.1
-Release: 2%{?dist}
+Version: 15.12.2
+Release: 1%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -120,6 +120,9 @@ update-desktop-database -q &> /dev/null ||:
 
 
 %changelog
+* Mon Feb 15 2016 Rex Dieter <rdieter@fedoraproject.org> - 1:15.12.2-1
+- 15.12.2
+
 * Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 1:15.12.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
