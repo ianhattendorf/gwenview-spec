@@ -1,13 +1,13 @@
 Name:    gwenview 
 Summary: An image viewer
 Epoch:   1
-Version: 15.12.3
+Version: 16.03.80
 Release: 1%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
 License: GPLv2+
-URL:     https://projects.kde.org/gwenview
+URL:     https://quickgit.kde.org/?p=%{name}.git
 %global revision %(echo %{version} | cut -d. -f3)
 %if %{revision} >= 50
 %global stable unstable
@@ -16,9 +16,10 @@ URL:     https://projects.kde.org/gwenview
 %endif 
 Source0: http://download.kde.org/%{stable}/applications/%{version}/src/%{name}-%{version}.tar.xz
 
+%global majmin_ver %(echo %{version} | cut -d. -f1,2)
+
 ## upstreamable patches
 
-BuildRequires: cmake 
 BuildRequires: desktop-file-utils
 BuildRequires: extra-cmake-modules
 BuildRequires: gettext
@@ -27,11 +28,10 @@ BuildRequires: kf5-baloo-devel
 BuildRequires: kf5-kactivities-devel
 buildRequires: kf5-kdelibs4support-devel
 BuildRequires: kf5-kio-devel
-%if "%{?copr_projectname}" == "digikam"
-BuildRequires: kf5-libkdcraw-devel
-BuildRequires: kf5-libkipi-devel
-Recommends: kipi-plugins
-%endif
+#if "%{?copr_projectname}" == "digikam"
+BuildRequires: kf5-libkdcraw-devel >= %{majmin_ver}
+BuildRequires: kf5-libkipi-devel >= %{majmin_ver}
+#endif
 BuildRequires: libappstream-glib
 BuildRequires: libjpeg-devel
 BuildRequires: pkgconfig(exiv2)
@@ -60,7 +60,7 @@ Requires: %{name} = %{epoch}:%{version}-%{release}
 
 
 %prep
-%setup -q
+%autosetup -p1
 
 
 %build
@@ -120,6 +120,9 @@ update-desktop-database -q &> /dev/null ||:
 
 
 %changelog
+* Thu Apr 14 2016 Rex Dieter <rdieter@fedoraproject.org> - 1:16.03.80-1
+- 16.03.80
+
 * Tue Mar 15 2016 Rex Dieter <rdieter@fedoraproject.org> - 1:15.12.3-1
 - 15.12.3
 
