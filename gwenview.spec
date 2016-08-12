@@ -2,7 +2,7 @@ Name:    gwenview
 Summary: An image viewer
 Epoch:   1
 Version: 16.07.90
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -43,6 +43,9 @@ BuildRequires: pkgconfig(Qt5Concurrent) pkgconfig(Qt5Svg) pkgconfig(Qt5OpenGL)
 BuildRequires: pkgconfig(Qt5X11Extras)
 
 Requires: %{name}-libs%{?_isa} = %{epoch}:%{version}-%{release}
+
+# support for more formats, e.g. jp2, tiff, webp
+Recommends: qt5-qtimageformats%{?_isa}
 
 # when split occurred
 Conflicts: kdegraphics < 7:4.6.95-10
@@ -120,6 +123,9 @@ update-desktop-database -q &> /dev/null ||:
 
 
 %changelog
+* Fri Aug 12 2016 Rex Dieter <rdieter@fedoraproject.org> - 1:16.07.90-2
+- Recommends: qt5-qtimageformats
+
 * Sat Aug 06 2016 Rex Dieter <rdieter@fedoraproject.org> - 1:16.07.90-1
 - 16.07.90
 
