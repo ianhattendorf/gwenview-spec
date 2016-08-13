@@ -1,8 +1,8 @@
 Name:    gwenview 
 Summary: An image viewer
 Epoch:   1
-Version: 16.07.90
-Release: 2%{?dist}
+Version: 16.08.0
+Release: 1%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -123,6 +123,9 @@ update-desktop-database -q &> /dev/null ||:
 
 
 %changelog
+* Sat Aug 13 2016 Rex Dieter <rdieter@fedoraproject.org> - 1:16.08.0-1
+- 16.08.0
+
 * Fri Aug 12 2016 Rex Dieter <rdieter@fedoraproject.org> - 1:16.07.90-2
 - Recommends: qt5-qtimageformats
 
