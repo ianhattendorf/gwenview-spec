@@ -1,13 +1,13 @@
 Name:    gwenview 
 Summary: An image viewer
 Epoch:   1
-Version: 16.08.3
+Version: 16.12.1
 Release: 1%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
 License: GPLv2+
-URL:     https://quickgit.kde.org/?p=%{name}.git
+URL:     https://www.kde.org/applications/graphics/gwenview/
 %global revision %(echo %{version} | cut -d. -f3)
 %if %{revision} >= 50
 %global stable unstable
@@ -78,12 +78,9 @@ make %{?_smp_mflags} -C %{_target_platform}
 %install
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
-mv %{buildroot}%{_kf5_datadir}/appdata/gwenview.appdata.xml \
-   %{buildroot}%{_kf5_datadir}/appdata/org.kde.gwenview.appdata.xml ||:
-
 
 %check
-appstream-util validate-relax --nonet %{buildroot}%{_kf5_datadir}/appdata/org.kde.gwenview.appdata.xml ||:
+appstream-util validate-relax --nonet %{buildroot}%{_kf5_datadir}/appdata/org.kde.gwenview.appdata.xml
 desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.gwenview.desktop
 
 
@@ -123,6 +120,9 @@ update-desktop-database -q &> /dev/null ||:
 
 
 %changelog
+* Thu Jan 12 2017 Rex Dieter <rdieter@fedoraproject.org> - 1:16.12.1-1
+- 16.12.1, update URL
+
 * Mon Dec 05 2016 Rex Dieter <rdieter@fedoraproject.org> - 1:16.08.3-1
 - 16.08.3
 
