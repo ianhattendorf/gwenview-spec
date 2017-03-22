@@ -2,7 +2,7 @@ Name:    gwenview
 Summary: An image viewer
 Epoch:   1
 Version: 16.12.3
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -46,6 +46,8 @@ Requires: %{name}-libs%{?_isa} = %{epoch}:%{version}-%{release}
 
 # support for more formats, e.g. jp2, tiff, webp
 Recommends: qt5-qtimageformats%{?_isa}
+# eps, etc...
+Recommends: kf5-kimageformats%{?_isa}
 
 # when split occurred
 Conflicts: kdegraphics < 7:4.6.95-10
@@ -120,6 +122,9 @@ update-desktop-database -q &> /dev/null ||:
 
 
 %changelog
+* Wed Mar 22 2017 Rex Dieter <rdieter@fedoraproject.org> - 2:16.12.3-2
+- Recommends: kf5-kimageformats
+
 * Thu Mar 09 2017 Rex Dieter <rdieter@fedoraproject.org> - 1:16.12.3-1
 - 16.12.3
 
