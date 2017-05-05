@@ -1,8 +1,8 @@
 Name:    gwenview 
 Summary: An image viewer
 Epoch:   1
-Version: 16.12.3
-Release: 3%{?dist}
+Version: 17.04.0
+Release: 1%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -80,6 +80,8 @@ make %{?_smp_mflags} -C %{_target_platform}
 %install
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
+%find_lang %{name} --all-name --with-html
+
 
 %check
 appstream-util validate-relax --nonet %{buildroot}%{_kf5_datadir}/appdata/org.kde.gwenview.appdata.xml
@@ -100,16 +102,17 @@ fi
 gtk-update-icon-cache %{_kf5_datadir}/icons/hicolor &> /dev/null || :
 update-desktop-database -q &> /dev/null ||:
 
-%files 
+%files -f %{name}.lang
 %license COPYING
 %{_kf5_bindir}/gwenview
+%{_kf5_bindir}/gwenview_importer
 %{_kf5_datadir}/applications/org.kde.gwenview.desktop
 %{_datadir}/appdata/org.kde.gwenview.appdata.xml
 %{_kf5_datadir}/icons/hicolor/*/*/*
-%{_kf5_docdir}/HTML/en/gwenview/
 %{_kf5_datadir}/gwenview/
 %{_kf5_datadir}/kservices5/ServiceMenus/slideshow.desktop
-%{_kf5_datadir}/kxmlgui5/org.kde.gwenview/
+%{_kf5_datadir}/kxmlgui5/gwenview/
+%{_kf5_datadir}/solid/actions/gwenview_importer*.desktop
 
 %post libs -p /sbin/ldconfig
 %postun libs -p /sbin/ldconfig
@@ -122,6 +125,9 @@ update-desktop-database -q &> /dev/null ||:
 
 
 %changelog
+* Fri May 05 2017 Rex Dieter <rdieter@fedoraproject.org> - 1:17.04.0-1
+- 17.04.0
+
 * Tue May 02 2017 Rex Dieter <rdieter@fedoraproject.org> - 1:16.12.3-3
 - rebuild (exiv2)
 
