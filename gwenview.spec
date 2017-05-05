@@ -52,6 +52,9 @@ Recommends: kf5-kimageformats%{?_isa}
 # when split occurred
 Conflicts: kdegraphics < 7:4.6.95-10
 
+# translations moved here
+Conflicts: kde-l10n < 17.03
+
 %description
 %{summary}.
 
