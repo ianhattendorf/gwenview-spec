@@ -1,7 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
 Epoch:   1
-Version: 17.04.0
+Version: 17.04.1
 Release: 1%{?dist}
 
 # app: GPLv2+
@@ -128,6 +128,9 @@ update-desktop-database -q &> /dev/null ||:
 
 
 %changelog
+* Thu May 11 2017 Rex Dieter <rdieter@fedoraproject.org> - 1:17.04.1-1
+- 17.04.1
+
 * Fri May 05 2017 Rex Dieter <rdieter@fedoraproject.org> - 1:17.04.0-1
 - 17.04.0
 
