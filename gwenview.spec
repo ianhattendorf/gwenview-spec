@@ -1,8 +1,8 @@
 Name:    gwenview 
 Summary: An image viewer
 Epoch:   1
-Version: 17.04.1
-Release: 2%{?dist}
+Version: 17.04.2
+Release: 1%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -128,6 +128,9 @@ update-desktop-database -q &> /dev/null ||:
 
 
 %changelog
+* Thu Jun 15 2017 Rex Dieter <rdieter@fedoraproject.org> - 1:17.04.2-1
+- 17.04.2
+
 * Mon May 15 2017 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1:17.04.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_27_Mass_Rebuild
 
