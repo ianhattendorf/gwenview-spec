@@ -1,7 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
 Epoch:   1
-Version: 17.08.3
+Version: 17.12.0
 Release: 1%{?dist}
 
 # app: GPLv2+
@@ -87,7 +87,7 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %check
-appstream-util validate-relax --nonet %{buildroot}%{_kf5_datadir}/appdata/org.kde.gwenview.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}%{_kf5_metainfodir}/org.kde.gwenview.appdata.xml
 desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.gwenview.desktop
 
 
@@ -110,7 +110,7 @@ update-desktop-database -q &> /dev/null ||:
 %{_kf5_bindir}/gwenview
 %{_kf5_bindir}/gwenview_importer
 %{_kf5_datadir}/applications/org.kde.gwenview.desktop
-%{_datadir}/appdata/org.kde.gwenview.appdata.xml
+%{_kf5_metainfodir}/org.kde.gwenview.appdata.xml
 %{_kf5_datadir}/icons/hicolor/*/*/*
 %{_kf5_datadir}/gwenview/
 %{_kf5_datadir}/kservices5/ServiceMenus/slideshow.desktop
@@ -128,6 +128,9 @@ update-desktop-database -q &> /dev/null ||:
 
 
 %changelog
+* Thu Dec 28 2017 Rex Dieter <rdieter@fedoraproject.org> - 1:17.12.0-1
+- 17.12.0
+
 * Wed Nov 08 2017 Rex Dieter <rdieter@fedoraproject.org> - 1:17.08.3-1
 - 17.08.3
 
