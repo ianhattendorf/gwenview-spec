@@ -114,7 +114,6 @@ update-desktop-database -q &> /dev/null ||:
 %{_kf5_datadir}/icons/hicolor/*/*/*
 %{_kf5_datadir}/gwenview/
 %{_kf5_datadir}/kservices5/ServiceMenus/slideshow.desktop
-%{_kf5_datadir}/kxmlgui5/gwenview/
 %{_kf5_datadir}/solid/actions/gwenview_importer*.desktop
 
 %post libs -p /sbin/ldconfig
@@ -123,7 +122,6 @@ update-desktop-database -q &> /dev/null ||:
 %files libs
 %{_kf5_libdir}/libgwenviewlib.so.*
 %{_kf5_qtplugindir}/gvpart.so
-%{_kf5_datadir}/kxmlgui5/gvpart/
 %{_kf5_datadir}/kservices5/gvpart.desktop
 
 
