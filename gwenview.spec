@@ -122,6 +122,7 @@ update-desktop-database -q &> /dev/null ||:
 %files libs
 %{_kf5_libdir}/libgwenviewlib.so.*
 %{_kf5_qtplugindir}/gvpart.so
+%{_kf5_datadir}/kxmlgui5/gvpart/
 %{_kf5_datadir}/kservices5/gvpart.desktop
 
 
