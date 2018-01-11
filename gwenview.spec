@@ -2,7 +2,7 @@ Name:    gwenview
 Summary: An image viewer
 Epoch:   1
 Version: 17.12.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -91,20 +91,6 @@ appstream-util validate-relax --nonet %{buildroot}%{_kf5_metainfodir}/org.kde.gw
 desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.gwenview.desktop
 
 
-%post
-touch --no-create %{_kf5_datadir}/icons/hicolor &> /dev/null || :
-
-%postun
-if [ $1 -eq 0 ] ; then
-touch --no-create %{_kf5_datadir}/icons/hicolor &> /dev/null
-gtk-update-icon-cache %{_kf5_datadir}/icons/hicolor &> /dev/null || :
-update-desktop-database -q &> /dev/null ||:
-fi
-
-%posttrans
-gtk-update-icon-cache %{_kf5_datadir}/icons/hicolor &> /dev/null || :
-update-desktop-database -q &> /dev/null ||:
-
 %files -f %{name}.lang
 %license COPYING
 %{_kf5_bindir}/gwenview
@@ -127,6 +113,9 @@ update-desktop-database -q &> /dev/null ||:
 
 
 %changelog
+* Thu Jan 11 2018 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 1:17.12.0-2
+- Remove obsolete scriptlets
+
 * Thu Dec 28 2017 Rex Dieter <rdieter@fedoraproject.org> - 1:17.12.0-1
 - 17.12.0
 
