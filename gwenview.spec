@@ -29,8 +29,8 @@ BuildRequires: kf5-kactivities-devel
 buildRequires: kf5-kdelibs4support-devel
 BuildRequires: kf5-kio-devel
 #if "%{?copr_projectname}" == "digikam"
-BuildRequires: kf5-libkdcraw-devel >= %{majmin_ver}
-BuildRequires: kf5-libkipi-devel >= %{majmin_ver}
+BuildRequires: kf5-libkdcraw-devel
+BuildRequires: kf5-libkipi-devel
 #endif
 BuildRequires: libappstream-glib
 BuildRequires: libjpeg-devel
@@ -77,7 +77,7 @@ pushd %{_target_platform}
 %{cmake_kf5} ..
 popd
 
-make %{?_smp_mflags} -C %{_target_platform}
+%make_build -C %{_target_platform}
 
 
 %install
@@ -101,9 +101,9 @@ desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.gwenview.
 %{_kf5_datadir}/gwenview/
 %{_kf5_datadir}/kservices5/ServiceMenus/slideshow.desktop
 %{_kf5_datadir}/solid/actions/gwenview_importer*.desktop
+%{_kf5_datadir}/kconf_update/gwenview*
 
-%post libs -p /sbin/ldconfig
-%postun libs -p /sbin/ldconfig
+%ldconfig_scriptlets libs
 
 %files libs
 %{_kf5_libdir}/libgwenviewlib.so.*
