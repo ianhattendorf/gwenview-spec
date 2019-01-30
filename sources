@@ -1,1 +1,3 @@
 SHA512 (gwenview-18.12.1.tar.xz) = 609c670bc7ff8007fbc96d1fb4de9a0686e8e8c1171c396ae00b1c96fb531855a3881c57bcdf578e1c6c29670fda58ef6eaab407d60ad7f7f419e7c92d5a4d8d
+SHA512 (0007-Use-forward-declaration-for-Exiv2-Image-port-to-std-.patch) = ef16935e318a58554eee3963ee0f189bc7f76a10f86bf113c2b85a25b7d7b57b4552b6030d9fffaf842cf145f9786a64f8bff9b6a231d315d1ea62937f326070
+SHA512 (0008-Compile-more-files-with-enabled-exceptions-required-.patch) = 497dd87ca158883ac9646093a129134c7514071a17a9b5fa4b30725b4119fdb9f56d1a2d4cf16ffa93c36b279ccaac0916e0a5c87da4983cf7722a3da54aab0c

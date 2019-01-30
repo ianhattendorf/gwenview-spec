@@ -8,3 +8,5 @@
 /gwenview-18.08.3.tar.xz
 /gwenview-18.12.0.tar.xz
 /gwenview-18.12.1.tar.xz
+/0007-Use-forward-declaration-for-Exiv2-Image-port-to-std-.patch
+/0008-Compile-more-files-with-enabled-exceptions-required-.patch

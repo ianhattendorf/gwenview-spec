@@ -18,6 +18,10 @@ Source0: http://download.kde.org/%{stable}/applications/%{version}/src/%{name}-%
 
 %global majmin_ver %(echo %{version} | cut -d. -f1,2)
 
+## upstream patches (lookaside cache, master branch)
+Patch7: 0007-Use-forward-declaration-for-Exiv2-Image-port-to-std-.patch
+Patch8: 0008-Compile-more-files-with-enabled-exceptions-required-.patch
+
 ## upstreamable patches
 
 BuildRequires: desktop-file-utils
@@ -114,7 +118,7 @@ desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.gwenview.
 
 %changelog
 * Wed Jan 30 2019 Rex Dieter <rdieter@fedoraproject.org> - 1:18.12.1-2
-- rebuild (exiv2)
+- pull in upstream exiv2-related fixes
 
 * Tue Jan 08 2019 Rex Dieter <rdieter@fedoraproject.org> - 1:18.12.1-1
 - 18.12.1
