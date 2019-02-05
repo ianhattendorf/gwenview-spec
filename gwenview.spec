@@ -1,8 +1,8 @@
 Name:    gwenview 
 Summary: An image viewer
 Epoch:   1
-Version: 18.12.1
-Release: 3%{?dist}
+Version: 18.12.2
+Release: 1%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -18,7 +18,7 @@ Source0: http://download.kde.org/%{stable}/applications/%{version}/src/%{name}-%
 
 %global majmin_ver %(echo %{version} | cut -d. -f1,2)
 
-## upstream patches (lookaside cache, master branch)
+## upstream patches (master branch)
 Patch7: 0007-Use-forward-declaration-for-Exiv2-Image-port-to-std-.patch
 Patch8: 0008-Compile-more-files-with-enabled-exceptions-required-.patch
 
@@ -117,6 +117,9 @@ desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.gwenview.
 
 
 %changelog
+* Tue Feb 05 2019 Rex Dieter <rdieter@fedoraproject.org> - 1:18.12.2-1
+- 18.12.2
+
 * Fri Feb 01 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1:18.12.1-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
