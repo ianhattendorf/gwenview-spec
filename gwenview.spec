@@ -1,7 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
 Epoch:   1
-Version: 18.12.3
+Version: 19.04.2
 Release: 1%{?dist}
 
 # app: GPLv2+
@@ -18,9 +18,7 @@ Source0: http://download.kde.org/%{stable}/applications/%{version}/src/%{name}-%
 
 %global majmin_ver %(echo %{version} | cut -d. -f1,2)
 
-## upstream patches (master branch)
-Patch7: 0007-Use-forward-declaration-for-Exiv2-Image-port-to-std-.patch
-Patch8: 0008-Compile-more-files-with-enabled-exceptions-required-.patch
+## upstream patches
 
 ## upstreamable patches
 
@@ -117,6 +115,9 @@ desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.gwenview.
 
 
 %changelog
+* Tue Jun 04 2019 Rex Dieter <rdieter@fedoraproject.org> - 1:19.04.2-1
+- 19.04.2
+
 * Fri Mar 08 2019 Rex Dieter <rdieter@fedoraproject.org> - 1:18.12.3-1
 - 18.12.3
 
