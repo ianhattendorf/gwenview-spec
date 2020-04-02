@@ -2,7 +2,7 @@ Name:    gwenview
 Summary: An image viewer
 Epoch:   1
 Version: 19.12.3
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -118,6 +118,9 @@ desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.gwenview.
 
 
 %changelog
+* Thu Apr 02 2020 Björn Esser <besser82@fedoraproject.org> - 1:19.12.3-2
+- Fix string quoting for rpm >= 4.16
+
 * Fri Mar 06 2020 Rex Dieter <rdieter@fedoraproject.org> - 1:19.12.3-1
 - 19.12.3
 
