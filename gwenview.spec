@@ -32,7 +32,7 @@ buildRequires: kf5-kdelibs4support-devel
 BuildRequires: kf5-kio-devel
 #if "%{?copr_projectname}" == "digikam"
 # LibRaw not in all arches of RHEL8
-%if !(0%{?rhel} == 8 && ( %{_arch} == "aarch64" || %{_arch} == "s390x" ))
+%if !(0%{?rhel} == 8 && ( "%{_arch}" == "aarch64" || "%{_arch}" == "s390x" ))
 BuildRequires: kf5-libkdcraw-devel
 BuildRequires: kf5-libkipi-devel
 %endif
