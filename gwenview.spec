@@ -1,8 +1,8 @@
 Name:    gwenview 
 Summary: An image viewer
 Epoch:   1
-Version: 19.12.3
-Release: 2%{?dist}
+Version: 20.04.1
+Release: 1%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -107,17 +107,21 @@ desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.gwenview.
 %{_kf5_datadir}/kservices5/ServiceMenus/slideshow.desktop
 %{_kf5_datadir}/solid/actions/gwenview_importer*.desktop
 %{_kf5_datadir}/kconf_update/gwenview*
+%{_kf5_datadir}/qlogging-categories5/gwenview.categories
 
 %ldconfig_scriptlets libs
 
 %files libs
 %{_kf5_libdir}/libgwenviewlib.so.*
-%{_kf5_qtplugindir}/gvpart.so
+%{_qt5_plugindir}/kf5/parts/gvpart.so
 %{_kf5_datadir}/kxmlgui5/gvpart/
 %{_kf5_datadir}/kservices5/gvpart.desktop
 
 
 %changelog
+* Mon May 25 2020 Martin Kyral <martin.kyral@gmail.com> - 1:20.04.1-1
+- 20.04.1
+
 * Thu Apr 02 2020 Björn Esser <besser82@fedoraproject.org> - 1:19.12.3-2
 - Fix string quoting for rpm >= 4.16
 
