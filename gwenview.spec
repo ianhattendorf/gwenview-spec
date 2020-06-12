@@ -1,7 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
 Epoch:   1
-Version: 20.04.1
+Version: 20.04.2
 Release: 1%{?dist}
 
 # app: GPLv2+
@@ -14,7 +14,7 @@ URL:     https://www.kde.org/applications/graphics/gwenview/
 %else
 %global stable stable
 %endif 
-Source0: http://download.kde.org/%{stable}/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source0: http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 
 %global majmin_ver %(echo %{version} | cut -d. -f1,2)
 
@@ -119,6 +119,9 @@ desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.gwenview.
 
 
 %changelog
+* Fri Jun 12 2020 Rex Dieter <rdieter@fedoraproject.org> - 1:20.04.2-1
+- 20.04.2
+
 * Mon May 25 2020 Martin Kyral <martin.kyral@gmail.com> - 1:20.04.1-1
 - 20.04.1
 
