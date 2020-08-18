@@ -1,8 +1,8 @@
 Name:    gwenview 
 Summary: An image viewer
 Epoch:   1
-Version: 20.04.3
-Release: 4%{?dist}
+Version: 20.08.0
+Release: 1%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -116,6 +116,9 @@ desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.gwenview.
 
 
 %changelog
+* Tue Aug 18 2020 Rex Dieter <rdieter@fedoraproject.org> - 1:20.08.0-1
+- 20.08.0
+
 * Mon Aug 10 2020 Rex Dieter <rdieter@fedoraproject.org> - 20.04.3-4
 - use new cmake macros
 
