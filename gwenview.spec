@@ -109,7 +109,8 @@ desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.gwenview.
 
 %files libs
 %{_kf5_libdir}/libgwenviewlib.so.*
-%{_qt5_plugindir}/kf5/parts/gvpart.so
+%{_kf5_plugindir}/parts/gvpart.so
+%{_kf5_plugindir}/kfileitemaction/slideshowfileitemaction.so
 %{_kf5_datadir}/kservices5/gvpart.desktop
 
 
