@@ -101,7 +101,6 @@ desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.gwenview.
 %{_kf5_metainfodir}/org.kde.gwenview.appdata.xml
 %{_kf5_datadir}/icons/hicolor/*/*/*
 %{_kf5_datadir}/gwenview/
-%{_kf5_datadir}/kservices5/ServiceMenus/slideshow.desktop
 %{_kf5_datadir}/solid/actions/gwenview_importer*.desktop
 %{_kf5_datadir}/kconf_update/gwenview*
 %{_kf5_datadir}/qlogging-categories5/gwenview.categories
