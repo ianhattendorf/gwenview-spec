@@ -1,7 +1,7 @@
 Name:    gwenview 
 Summary: An image viewer
 Epoch:   1
-Version: 21.08.3
+Version: 21.12.0
 Release: 1%{?dist}
 
 # app: GPLv2+
@@ -115,6 +115,9 @@ desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.gwenview.
 
 
 %changelog
+* Mon Dec 27 2021 Rex Dieter <rdieter@fedoraproject.org> - 1:21.12.0-1
+- 21.12.0
+
 * Tue Nov 02 2021 Rex Dieter <rdieter@fedoraproject.org> - 1:21.08.3-1
 - 21.08.3
 
