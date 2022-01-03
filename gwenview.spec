@@ -2,7 +2,7 @@ Name:    gwenview
 Summary: An image viewer
 Epoch:   1
 Version: 21.12.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 # app: GPLv2+
 # lib:  IJG and (LGPLv2 or LGPLv3 or LGPLv3+ (KDE e.V.)) and LGPLv2+ and GPLv2+
@@ -39,6 +39,7 @@ BuildRequires: kf5-libkipi-devel
 #endif
 BuildRequires: libappstream-glib
 BuildRequires: libjpeg-devel
+BuildRequires: pkgconfig(cfitsio)
 BuildRequires: pkgconfig(exiv2)
 BuildRequires: pkgconfig(lcms2)
 BuildRequires: pkgconfig(libpng)
@@ -115,6 +116,9 @@ desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.gwenview.
 
 
 %changelog
+* Mon Jan 03 2022 Ian Hattendorf <ian@ianhattendorf.com> - 1:21.12.0-2
+- Build with FITS support
+
 * Mon Dec 27 2021 Rex Dieter <rdieter@fedoraproject.org> - 1:21.12.0-1
 - 21.12.0
 
